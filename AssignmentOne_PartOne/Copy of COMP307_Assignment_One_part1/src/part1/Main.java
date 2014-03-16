@@ -128,6 +128,10 @@ public class Main {
 		//Return
 		for (Pair pair : subList) {
 			if(! voters.keySet().contains(pair.i)){
+				voters.put(pair.i, 1);
+				
+			}
+			else{
 				
 			}
 		}
