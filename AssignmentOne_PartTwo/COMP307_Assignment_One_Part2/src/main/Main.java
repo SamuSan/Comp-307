@@ -34,26 +34,29 @@ public class Main {
 
 //		createTrainingData(hepatitisTraining);
 	readDataFile(hepatitisTraining);
-	for (Instance i : allInstances) {
-		System.out.println(i.toString());
-	} 
-	for (String string : attNames) {
-		System.out.println(string);
-	}
-	for (String string : categoryNames) {
-		System.out.println(string);
-	}
-	
+//	for (Instance i : allInstances) {
+//		System.out.println(i.toString());
+//	} 
+//	for (String string : attNames) {
+//		System.out.println(string);
+//	}
+//	for (String string : categoryNames) {
+//		System.out.println(string);
+//	}
+	doInformationGainCalc();
 	}
 
 	private static void doInformationGainCalc(){
 		int idx=0;
-		double trueLiveCount = 0;
-		double trueDieCount = 0;
-		double falseDieCount=0;
-		double falseLiveCount=0;
+
 		while (idx < attNames.size()) {
+			double trueLiveCount = 0;
+			double trueDieCount = 0;
+			double falseDieCount=0;
+			double falseLiveCount=0;
 			for (Instance inst : allInstances) {
+//				System.out.println(inst.toString());
+//				System.out.println(inst.category);
 				if(inst.vals.get(idx)==true && inst.category ==0){
 					trueLiveCount++;
 				}
@@ -66,9 +69,14 @@ public class Main {
 				else if(inst.vals.get(idx)==false && inst.category ==1){
 					falseDieCount++;
 				}
-				idx++;
+				
 			}
-			
+			System.out.println(attNames.get(idx).toString());
+			System.out.println("True Live = " + trueLiveCount);
+			System.out.println("True Die = " + trueDieCount );
+			System.out.println("False Live  = "+ falseLiveCount);
+			System.out.println("False Die = " + falseDieCount);
+			idx++;
 			
 		}
 		
