@@ -15,10 +15,10 @@ public class Main {
 
 	private static String trainingFilename = "iris-training.txt";
 	private static String testFilename = "iris-test.txt";
-	private static List <Pair>  candidates = new ArrayList<Pair>();
-	private static List<Iris> trainingIris = new ArrayList<Iris>();
-	private static List<Iris> testingIris = new ArrayList<Iris>();
-	private static int K = 1;
+	private static ArrayList <Pair>  candidates = new ArrayList<Pair>();
+	private static ArrayList<Iris> trainingIris = new ArrayList<Iris>();
+	private static ArrayList<Iris> testingIris = new ArrayList<Iris>();
+	private static int K = 3;
 
 
 	public static void main(String[] args) {
@@ -103,7 +103,11 @@ public class Main {
 			Collections.sort(candidates, new PairComparator());
 			System.out.println(candidates.size());
 			System.out.println(i.toString());
-			Iris match = doVote(K, candidates);
+			ArrayList<Pair> sublist = new ArrayList<Pair>();
+			for (int j = 0; j < K; j++) {
+				sublist.add(candidates.get(j));
+			}
+			Iris match = doVote(sublist);
 			System.out.println(candidates.get(0).i.toString());
 			count ++;
 			System.out.println("Count"+count);
@@ -119,24 +123,26 @@ public class Main {
 		System.out.println(rate + "% success");
 	}
 
-	private static Iris doVote(int k2, List<Pair> candidates2) {
+	private static Iris doVote(List<Pair> list) {
 		HashMap<Iris, Integer> voters = new HashMap<Iris, Integer> ();
 		//Make a sublist of candidates
-		List<Pair> subList = candidates.subList(0, K-1);
+//		List<Pair> subList = candidates.subList(0, K);
+//		candidates.subList(0, K);
 		//from that sublist count how many times a particular class appears
 		//The majority wins
 		//Return
-		for (Pair pair : subList) {
+		for (Pair pair : list) {
 			if(! voters.keySet().contains(pair.i)){
 				voters.put(pair.i, 1);
-				
 			}
 			else{
-				
+			int x =	voters.remove(pair.i);
+			voters.put(pair.i, x+1);
 			}
 		}
 		
-		// TODO Auto-generated method stub
+		Pair maj = null;
+		
 		return null;
 	}
 }
