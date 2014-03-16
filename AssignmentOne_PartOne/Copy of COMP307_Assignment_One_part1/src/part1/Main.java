@@ -18,6 +18,7 @@ public class Main {
 	private static List <Pair>  candidates = new ArrayList<Pair>();
 	private static List<Iris> trainingIris = new ArrayList<Iris>();
 	private static List<Iris> testingIris = new ArrayList<Iris>();
+	private static int K = 1;
 
 
 	public static void main(String[] args) {
@@ -102,6 +103,7 @@ public class Main {
 			Collections.sort(candidates, new PairComparator());
 			System.out.println(candidates.size());
 			System.out.println(i.toString());
+			Iris match = doVote(K, candidates);
 			System.out.println(candidates.get(0).i.toString());
 			count ++;
 			System.out.println("Count"+count);
@@ -115,5 +117,22 @@ public class Main {
 		}
 		double rate = success / count;
 		System.out.println(rate + "% success");
+	}
+
+	private static Iris doVote(int k2, List<Pair> candidates2) {
+		HashMap<Iris, Integer> voters = new HashMap<Iris, Integer> ();
+		//Make a sublist of candidates
+		List<Pair> subList = candidates.subList(0, K-1);
+		//from that sublist count how many times a particular class appears
+		//The majority wins
+		//Return
+		for (Pair pair : subList) {
+			if(! voters.keySet().contains(pair.i)){
+				
+			}
+		}
+		
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
