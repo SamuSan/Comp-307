@@ -22,15 +22,26 @@ public class InformationGain {
 	}
 
 	private void calcGain() {
-		double allTrue = trueLive + trueDie;
-		double allFalse = falseLive + falseDie;
-		double entT = entropy(trueLive, falseLive);
+		double allLive = trueLive + falseLive;
+		double allDie = trueDie + falseDie;
+		
+		
+		double totalEnt = (allLive/totalCases) * entropy(trueLive,falseLive) + (allDie/totalCases)* entropy(trueDie,falseDie);
+		totalGain = 1- totalEnt;
 
 	}
 
 	public double entropy(double a, double b) {
+		if(a ==0 || b == 0){
+			return 0;
+		}
 		double ent = -a / (a+b) * Math.log(a / (a+b)) -b / (a+b) * Math.log(b / (a+b)) ;
+		System.out.println(ent);
 		return ent;
+	}
+
+	public double getTotalGain() {
+		return totalGain;
 	}
 
 	@Override

@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,6 +19,7 @@ public class Main {
 	private static List<String> attNames;
 	private static List<Instance> allInstances;
 	private static HashMap<String,Double> percentages = new HashMap<String,Double>();
+	private static ArrayList<InformationGain> gains = new ArrayList<InformationGain>();
 
 	private static String hepatitisTesting = "hepatitis-test.data";
 	private static String hepatitisTraining = "hepatitis-training.data";
@@ -78,10 +80,18 @@ public class Main {
 			System.out.println("False Live  = "+ falseLiveCount);
 			System.out.println("False Die = " + falseDieCount);
 			System.out.println("Total cases = " +(trueDieCount+trueLiveCount+falseDieCount+falseLiveCount));
+			gains.add(new InformationGain(trueLiveCount, trueDieCount, falseLiveCount, falseDieCount, attNames.get(idx), totalCases));
 			idx++;
 			
 		}
-		
+		for (InformationGain gain : gains) {
+			System.out.println(gain.toString());
+		}
+		System.out.println("///////////////////////////////////////");
+		Collections.sort(gains, new GainComparator());
+		for (InformationGain gain : gains) {
+			System.out.println(gain.toString());
+		}
 		
 	}
 	
