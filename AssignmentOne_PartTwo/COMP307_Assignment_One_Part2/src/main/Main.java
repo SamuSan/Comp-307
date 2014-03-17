@@ -71,11 +71,13 @@ public class Main {
 				}
 				
 			}
+			double totalCases = trueDieCount+trueLiveCount+falseDieCount+falseLiveCount;
 			System.out.println(attNames.get(idx).toString());
 			System.out.println("True Live = " + trueLiveCount);
 			System.out.println("True Die = " + trueDieCount );
 			System.out.println("False Live  = "+ falseLiveCount);
 			System.out.println("False Die = " + falseDieCount);
+			System.out.println("Total cases = " +(trueDieCount+trueLiveCount+falseDieCount+falseLiveCount));
 			idx++;
 			
 		}
