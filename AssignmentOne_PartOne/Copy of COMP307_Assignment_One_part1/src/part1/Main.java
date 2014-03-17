@@ -18,7 +18,7 @@ public class Main {
 	private static ArrayList <Pair>  candidates = new ArrayList<Pair>();
 	private static ArrayList<Iris> trainingIris = new ArrayList<Iris>();
 	private static ArrayList<Iris> testingIris = new ArrayList<Iris>();
-	private static int K = 3;
+	private static int K = 5;
 
 
 	public static void main(String[] args) {
@@ -26,17 +26,17 @@ public class Main {
 //			trainingFilename = args[0];
 //			testFilename = args[1];
 //		} else {
-//			System.out.println("Two data files must be specified");
+//			d("Two data files must be specified");
 //		}
 
 		createTrainingData(trainingFilename);
 		createTestData(testFilename);
 //		for (Iris iris : trainingIris) {
-//			System.out.println(iris.toString());
+//			d(iris.toString());
 //		}
-//		System.out.println("///////////////////////");
+//		d("///////////////////////");
 //		for (Iris iris : testingIris) {
-//			System.out.println(iris.toString());
+//			d(iris.toString());
 //		}
 		doClassification();
 	}
@@ -96,35 +96,34 @@ public class Main {
 		for (Iris i : testingIris) {
 			for (Iris e : trainingIris) {
 			double dist = 	EucledianCalc.euclidCalc(i, e);
-//			System.out.println("Dist = " + dist);
+//			d("Dist = " + dist);
 			Pair p = new Pair(dist,e);
 			candidates.add(p);
 			}
 			Collections.sort(candidates, new PairComparator());
-			System.out.println(candidates.size());
-			System.out.println(i.toString());
+			d(candidates.size());
+			d(i.toString());
 			ArrayList<Pair> sublist = new ArrayList<Pair>();
 			for (int j = 0; j < K; j++) {
 				sublist.add(candidates.get(j));
 			}
-			Iris match = doVote(sublist);
-			System.out.println(candidates.get(0).i.toString());
+			String match = doVote(sublist);
+			System.out.println(match);
+			d(match);
 			count ++;
-			System.out.println("Count"+count);
-			System.out.println("Sucess "+success);
-			System.out.println("Chosen Dist = "+ candidates.get(0).dist);
+			d("Chosen Dist = "+ candidates.get(0).dist);
 			if(i.getClass() == candidates.get(0).i.getClass()){
 				success++;
 			}
-//			System.out.println("///////////////////////////S");
+//			d("///////////////////////////S");
 			candidates.clear();
 		}
 		double rate = success / count;
-		System.out.println(rate + "% success");
+		d(rate + "% success");
 	}
 
-	private static Iris doVote(List<Pair> list) {
-		HashMap<Iris, Integer> voters = new HashMap<Iris, Integer> ();
+	private static String doVote(List<Pair> list) {
+		HashMap<String, Integer> voters = new HashMap<String, Integer> ();
 		//Make a sublist of candidates
 //		List<Pair> subList = candidates.subList(0, K);
 //		candidates.subList(0, K);
@@ -132,17 +131,21 @@ public class Main {
 		//The majority wins
 		//Return
 		for (Pair pair : list) {
-			if(! voters.keySet().contains(pair.i)){
-				voters.put(pair.i, 1);
+			if(! voters.keySet().contains(pair.i.getClazz())){
+				voters.put(pair.i.getClazz(), 1);
 			}
 			else{
-			int x =	voters.remove(pair.i);
-			voters.put(pair.i, x+1);
+			int x =	voters.remove(pair.i.getClazz());
+			voters.put(pair.i.getClazz(), x+1);
 			}
 		}
 		
-		Pair maj = null;
+		d("");
 		
 		return null;
+	}
+	
+	private static void d(Object o){
+	//	System.out.println(o.toString());
 	}
 }
