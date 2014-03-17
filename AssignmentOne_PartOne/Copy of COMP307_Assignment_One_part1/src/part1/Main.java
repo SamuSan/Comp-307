@@ -15,29 +15,28 @@ public class Main {
 
 	private static String trainingFilename = "iris-training.txt";
 	private static String testFilename = "iris-test.txt";
-	private static ArrayList <Pair>  candidates = new ArrayList<Pair>();
+	private static ArrayList<Pair> candidates = new ArrayList<Pair>();
 	private static ArrayList<Iris> trainingIris = new ArrayList<Iris>();
 	private static ArrayList<Iris> testingIris = new ArrayList<Iris>();
-	private static int K = 5;
-
+	private static int K = 15;
 
 	public static void main(String[] args) {
-//		if (args.length == 2) {
-//			trainingFilename = args[0];
-//			testFilename = args[1];
-//		} else {
-//			d("Two data files must be specified");
-//		}
+		// if (args.length == 2) {
+		// trainingFilename = args[0];
+		// testFilename = args[1];
+		// } else {
+		// d("Two data files must be specified");
+		// }
 
 		createTrainingData(trainingFilename);
 		createTestData(testFilename);
-//		for (Iris iris : trainingIris) {
-//			d(iris.toString());
-//		}
-//		d("///////////////////////");
-//		for (Iris iris : testingIris) {
-//			d(iris.toString());
-//		}
+		// for (Iris iris : trainingIris) {
+		// d(iris.toString());
+		// }
+		// d("///////////////////////");
+		// for (Iris iris : testingIris) {
+		// d(iris.toString());
+		// }
 		doClassification();
 	}
 
@@ -63,7 +62,7 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	private static void createTrainingData(String trainingFilename2) {
@@ -89,19 +88,19 @@ public class Main {
 			e.printStackTrace();
 		}
 	}
-	
-	private static void doClassification(){
-		double count =0;
-		double success =0;
+
+	private static void doClassification() {
+		double count = 0;
+		double success = 0;
 		for (Iris i : testingIris) {
 			for (Iris e : trainingIris) {
-			double dist = 	EucledianCalc.euclidCalc(i, e);
-//			d("Dist = " + dist);
-			Pair p = new Pair(dist,e);
-			candidates.add(p);
+				double dist = EucledianCalc.euclidCalc(i, e);
+				// d("Dist = " + dist);
+				Pair p = new Pair(dist, e);
+				candidates.add(p);
 			}
 			Collections.sort(candidates, new PairComparator());
-			d(candidates.size());
+		//	d(candidates.size());
 			d(i.toString());
 			ArrayList<Pair> sublist = new ArrayList<Pair>();
 			for (int j = 0; j < K; j++) {
@@ -109,13 +108,16 @@ public class Main {
 			}
 			String match = doVote(sublist);
 			System.out.println(match);
-			d(match);
-			count ++;
-			d("Chosen Dist = "+ candidates.get(0).dist);
-			if(i.getClass() == candidates.get(0).i.getClass()){
+			//d(match);
+			count++;
+			//d("Chosen Dist = " + candidates.get(0).dist);
+			if (i.getClazz().equals(match)) {
 				success++;
 			}
-//			d("///////////////////////////S");
+//			if (i.getClass() == candidates.get(0).i.getClass()) {
+//				success++;
+//			}
+			// d("///////////////////////////S");
 			candidates.clear();
 		}
 		double rate = success / count;
@@ -123,29 +125,34 @@ public class Main {
 	}
 
 	private static String doVote(List<Pair> list) {
-		HashMap<String, Integer> voters = new HashMap<String, Integer> ();
-		//Make a sublist of candidates
-//		List<Pair> subList = candidates.subList(0, K);
-//		candidates.subList(0, K);
-		//from that sublist count how many times a particular class appears
-		//The majority wins
-		//Return
+		HashMap<String, Integer> voters = new HashMap<String, Integer>();
+		// Make a sublist of candidates
+		// List<Pair> subList = candidates.subList(0, K);
+		// candidates.subList(0, K);
+		// from that sublist count how many times a particular class appears
+		// The majority wins
+		// Return
 		for (Pair pair : list) {
-			if(! voters.keySet().contains(pair.i.getClazz())){
+			if (!voters.keySet().contains(pair.i.getClazz())) {
 				voters.put(pair.i.getClazz(), 1);
-			}
-			else{
-			int x =	voters.remove(pair.i.getClazz());
-			voters.put(pair.i.getClazz(), x+1);
+			} else {
+				int x = voters.remove(pair.i.getClazz());
+				voters.put(pair.i.getClazz(), x + 1);
 			}
 		}
-		
-		d("");
-		
-		return null;
+		int maj = 0;
+		String choice = "";
+		for (String s : voters.keySet()) {
+			if (voters.get(s) > maj) {
+				maj = voters.get(s);
+				choice = s;
+			}
+		}
+
+		return choice;
 	}
-	
-	private static void d(Object o){
-	//	System.out.println(o.toString());
+
+	private static void d(Object o) {
+		 System.out.println(o.toString());
 	}
 }
