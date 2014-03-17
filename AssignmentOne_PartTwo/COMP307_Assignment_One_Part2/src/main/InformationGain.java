@@ -17,13 +17,15 @@ public class InformationGain {
 		this.falseLive = falseLive;
 		this.falseDie = falseDie;
 		this.cat = cat;
-		this.totalCases = totalCases;
+		this.totalCases = trueLive + falseLive+trueDie + falseDie;
 		calcGain();
 	}
 
 	private void calcGain() {
 		double allLive = trueLive + falseLive;
 		double allDie = trueDie + falseDie;
+		double total = totalCases;
+		
 		
 		
 		double totalEnt = (allLive/totalCases) * entropy(trueLive,falseLive) + (allDie/totalCases)* entropy(trueDie,falseDie);
