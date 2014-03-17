@@ -38,12 +38,15 @@ public class InformationGain {
 			return 0;
 		}
 		double ent = -a / (a+b) * Math.log(a / (a+b)) -b / (a+b) * Math.log(b / (a+b)) ;
-		System.out.println(ent);
 		return ent;
 	}
 
 	public double getTotalGain() {
 		return totalGain;
+	}
+
+	public String getCat() {
+		return cat;
 	}
 
 	@Override

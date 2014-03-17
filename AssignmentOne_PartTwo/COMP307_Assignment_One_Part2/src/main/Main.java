@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream.GetField;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -24,29 +25,37 @@ public class Main {
 	private static String hepatitisTesting = "hepatitis-test.data";
 	private static String hepatitisTraining = "hepatitis-training.data";
 	
+	private static DTNode root=null;
+	
 	private static int k =1;
 
 	public static void main(String[] args) throws IOException {
-		// if (args.length == 2) {
-		// trainingFilename = args[0];
-		// testFilename = args[1];
-		// } else {
-		// System.out.println("Two data files must be specified");
-		// }
-
-//		createTrainingData(hepatitisTraining);
 	readDataFile(hepatitisTraining);
-//	for (Instance i : allInstances) {
-//		System.out.println(i.toString());
-//	} 
-//	for (String string : attNames) {
-//		System.out.println(string);
-//	}
-//	for (String string : categoryNames) {
-//		System.out.println(string);
-//	}
 	doInformationGainCalc();
+	createTree();
 	}
+	private static void createTree(){
+		root = new DTNode();
+		DTNode currNode = root;
+		for (Instance i : allInstances) {
+			for (int att = 0; att < gains.size(); att++) {
+				String query = 	gains.get(att).getCat();
+				if(i.vals.get(attNames.indexOf(query)) && currNode.getTrueNode()==null){
+					currNode.setTrueNode(new DTNode(query));
+					currNode = currNode.getTrueNode();
+				}
+				else if (!i.vals.get(attNames.indexOf(query)) && currNode.getFalseNode()==null){
+					currNode.setFalseNode(new DTNode(query));
+					currNode = currNode.getFalseNode();
+				}
+			}
+			currNode.setCategory(categoryNames.get(i.getCategory()));
+			d(currNode.getCategory()+ currNode.toString());
+			currNode = root;
+		}
+		d("Done");
+	}
+
 
 	private static void doInformationGainCalc(){
 		int idx=0;
@@ -57,8 +66,6 @@ public class Main {
 			double falseDieCount=0;
 			double falseLiveCount=0;
 			for (Instance inst : allInstances) {
-//				System.out.println(inst.toString());
-//				System.out.println(inst.category);
 				if(inst.vals.get(idx)==true && inst.category ==0){
 					trueLiveCount++;
 				}
@@ -71,53 +78,11 @@ public class Main {
 				else if(inst.vals.get(idx)==false && inst.category ==1){
 					falseDieCount++;
 				}
-				
 			}
 			double totalCases = trueDieCount+trueLiveCount+falseDieCount+falseLiveCount;
-			System.out.println(attNames.get(idx).toString());
-			System.out.println("True Live = " + trueLiveCount);
-			System.out.println("True Die = " + trueDieCount );
-			System.out.println("False Live  = "+ falseLiveCount);
-			System.out.println("False Die = " + falseDieCount);
-			System.out.println("Total cases = " +(trueDieCount+trueLiveCount+falseDieCount+falseLiveCount));
 			gains.add(new InformationGain(trueLiveCount, trueDieCount, falseLiveCount, falseDieCount, attNames.get(idx), totalCases));
 			idx++;
 			
-		}
-		for (InformationGain gain : gains) {
-			System.out.println(gain.toString());
-		}
-		System.out.println("///////////////////////////////////////");
-		Collections.sort(gains, new GainComparator());
-		for (InformationGain gain : gains) {
-			System.out.println(gain.toString());
-		}
-		
-	}
-	
-	private static void createTrainingData(String trainingFilename2) {
-		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(
-					ClassLoader.getSystemResourceAsStream(trainingFilename2)));
-			String val = reader.readLine();
-			while (!val.isEmpty()) {
-				String[] vals = val.split("\\t");
-				// double sepLength = Double.valueOf(vals[0]);
-				// double sepWidth = Double.valueOf(vals[2]);
-				// double petLength = Double.valueOf(vals[4]);
-				// double petWidth = Double.valueOf(vals[6]);
-				// String clazz = vals[8];
-				// val = reader.readLine();
-
-				for (String string : vals) {
-					System.out.println(string);
-				}
-
-			}
-			reader.close();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 
@@ -188,5 +153,9 @@ public class Main {
 		}
 
 	}
+	
+private static void d(Object o){
+	System.out.println(o.toString());
+}
 
 }
