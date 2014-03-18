@@ -38,6 +38,10 @@ public class Main {
 		// d(iris.toString());
 		// }
 		doClassification();
+		
+		KCrossFoldValidation kCrossFold = new KCrossFoldValidation(testingIris);
+		
+		
 	}
 
 	private static void createTestData(String testFilename2) {
