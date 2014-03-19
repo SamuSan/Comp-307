@@ -20,7 +20,7 @@ public class Main {
 	private static List<String> attNames;
 	private static List<Instance> allInstances;
 	private static HashMap<String,Double> percentages = new HashMap<String,Double>();
-	private static ArrayList<InformationGain> gains = new ArrayList<InformationGain>();
+	private static ArrayList<Probability> gains = new ArrayList<Probability>();
 
 	private static String hepatitisTesting = "hepatitis-test.data";
 	private static String hepatitisTraining = "hepatitis-training.data";
@@ -32,7 +32,11 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 	readDataFile(hepatitisTraining);
 	doInformationGainCalc();
-	createTree();
+	d("/////////////////////////////");
+	for (Probability p : gains) {
+		d(p.toString());
+	}
+	//createTree();
 	}
 	private static void createTree(){
 		root = new DTNode();
@@ -80,9 +84,9 @@ public class Main {
 				}
 			}
 			double totalCases = trueDieCount+trueLiveCount+falseDieCount+falseLiveCount;
-			gains.add(new InformationGain(trueLiveCount, trueDieCount, falseLiveCount, falseDieCount, attNames.get(idx), totalCases));
+			gains.add(new Probability(trueLiveCount, trueDieCount, falseLiveCount, falseDieCount, attNames.get(idx), totalCases));
 			idx++;
-			
+			Collections.sort(gains,new ProbabilityComparator());
 		}
 	}
 

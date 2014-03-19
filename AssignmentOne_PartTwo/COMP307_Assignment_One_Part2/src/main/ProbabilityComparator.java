@@ -2,10 +2,10 @@ package main;
 
 import java.util.Comparator;
 
-public class GainComparator implements Comparator<InformationGain> {
+public class ProbabilityComparator implements Comparator<Probability> {
 
 	@Override
-	public int compare(InformationGain o1, InformationGain o2) {
+	public int compare(Probability o1, Probability o2) {
 		if(o1.getTotalGain() > o2.getTotalGain()){
 			return 1;
 		}
