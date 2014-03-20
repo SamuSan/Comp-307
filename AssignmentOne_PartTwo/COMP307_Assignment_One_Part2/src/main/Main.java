@@ -36,7 +36,11 @@ public class Main {
 		createTree();
 
 		testInstances = readDataFile(hepatitisTesting);
-		doTest();
+		d(allInstances.size());
+		for (Instance i : allInstances) {
+			//System.out.println(i.getAtt(attNames.indexOf("BIGLIVER")));
+		}
+		//doTest();
 	}
 
 	private static void doTest() {
@@ -51,7 +55,7 @@ public class Main {
 			if (i.getAtt(attNames.indexOf(curr.getAttribute()))) {
 				curr = curr.getTrueNode();
 			}
-			if (!i.getAtt(attNames.indexOf(curr.getAttribute()))) {
+			else if (!i.getAtt(attNames.indexOf(curr.getAttribute()))) {
 				curr = curr.getFalseNode();
 			}
 		}
@@ -64,7 +68,7 @@ public class Main {
 	}
 
 	private static boolean isLeaf(DTNode d) {
-		if (d.getTrueNode() != null || d.getFalseNode() != null) {
+		if (d.getCategory() == -1) {
 			return false;
 		}
 		return true;
@@ -77,7 +81,7 @@ public class Main {
 
 		for (Instance i : allInstances) {
 			for (int att = 0; att < gains.size(); att++) {
-
+				String currAtt = gains.get(att).getAttribute();
 				if (i.getAtt(att) && curr.getTrueNode() == null) {
 					if (!isLastAtt(att, gains.size() - 1)) {
 						curr.setTrueNode(new DTNode(gains.get(att + 1)
@@ -205,8 +209,10 @@ public class Main {
 		public String toString() {
 			StringBuilder ans = new StringBuilder(categoryNames.get(category));
 			ans.append(" ");
-			for (Boolean val : vals)
-				ans.append(val ? "true  " : "false ");
+			for (int i=0;i<vals.size();i++){
+				ans.append(attNames.get(i)+"  ");
+				ans.append(vals.get(i) ? "true  " : "false "+"\n");
+			}
 			return ans.toString();
 		}
 

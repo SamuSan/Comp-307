@@ -4,7 +4,7 @@ public class DTNode {
 	private DTNode trueNode = null;
 	private DTNode falseNode = null;
 	private String attribute;
-	private int category;
+	private int category=-1;
 
 	public DTNode(String attribute) {
 		super();
