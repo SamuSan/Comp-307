@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 
 public class Feature {
@@ -6,11 +7,29 @@ public class Feature {
 	boolean[] sign;
 
 	public Feature(int seed) {
-		seed++;
+		row = new int[4];
+		col = new int[4];
+		sign = new boolean[4];
 		for (int i = 0; i < 4; i++) {
-			row[i] = new Random().nextInt(seed-0) + 0;
-			col[i] = new Random().nextInt(seed-0) + 0;
+			row[i] = new Random().nextInt(seed - 0) + 0;
+			col[i] = new Random().nextInt(seed - 0) + 0;
 			sign[i] = new Random().nextBoolean();
 		}
+	}
+
+	public int weight(Image image) {
+		int sum = 0;
+		for (int i = 0; i < 4; i++) {
+			if (image.getImageFeature(this.row[i], this.col[i]) == this.sign[i])
+				sum++;
+		}
+		return (sum >= 3) ? 1 : 0;
+	}
+
+	@Override
+	public String toString() {
+		return "Feature [row=" + Arrays.toString(row) + ", col="
+				+ Arrays.toString(col) + ", sign=" + Arrays.toString(sign)
+				+ "]";
 	}
 }

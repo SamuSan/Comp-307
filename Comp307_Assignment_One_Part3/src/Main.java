@@ -10,11 +10,29 @@ import java.util.StringTokenizer;
 public class Main {
 	private static List<Image> images = new ArrayList<Image>();
 	private static List<Feature> features = new ArrayList<Feature>();
+	private static int seed =0;
 	private final static String fileName = "image.data";
 
 	public static void main(String[] args) throws IOException  {
 		setUp();
+	for (Feature f : features) {
+		d(f.toString());
+	}
+peceptron();
+	}
 
+	private static void peceptron() {
+		for (Image i : images) {
+			for (Feature f : features) {
+				if(f.weight(i) == 0){
+					d("Awesome cuntsticks");
+				}
+				else{
+					d("Fucksticks");
+				}
+			}
+		}
+		
 	}
 
 	private static void setUp() throws IOException {
@@ -24,8 +42,10 @@ public class Main {
 	}
 
 	private static void generateFeatures() {
-	int max = new Random().nextInt(100-50) + 50;
-		d(max);
+	int max = new Random().nextInt(80-50) + 50;
+		for (int i = 0; i < max; i++) {
+			features.add(new Feature(seed));
+		}
 	}
 
 	public static void readData(String fname) throws IOException {
@@ -59,6 +79,7 @@ d(cols);
 					pos++;
 				}
 			}
+			seed = Math.max(cols, rows);
 			Image imge = new Image(newImage,category );
 			images.add(imge);
 		}
