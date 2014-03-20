@@ -19,6 +19,7 @@ public class Main {
 	private static List<String> categoryNames;
 	private static List<String> attNames;
 	private static List<Instance> allInstances;
+	private static List<Instance> testInstances;
 	private static HashMap<String, Double> percentages = new HashMap<String, Double>();
 	private static ArrayList<Probability> gains = new ArrayList<Probability>();
 
@@ -30,11 +31,43 @@ public class Main {
 	private static int k = 1;
 
 	public static void main(String[] args) throws IOException {
-		readDataFile(hepatitisTraining);
+		allInstances = readDataFile(hepatitisTraining);
 		doInformationGainCalc();
-
 		createTree();
-		d(root.toString());
+
+		testInstances = readDataFile(hepatitisTesting);
+		doTest();
+	}
+
+	private static void doTest() {
+		for (Instance i : testInstances) {
+			doClassify(i);
+		}
+	}
+
+	private static void doClassify(Instance i) {
+		DTNode curr = root;
+		while (!isLeaf(curr)) {
+			if (i.getAtt(attNames.indexOf(curr.getAttribute()))) {
+				curr = curr.getTrueNode();
+			}
+			if (!i.getAtt(attNames.indexOf(curr.getAttribute()))) {
+				curr = curr.getFalseNode();
+			}
+		}
+		if (curr.getCategory() == i.getCategory()) {
+			d("Correct");
+		} else {
+			d("Wrong");
+		}
+
+	}
+
+	private static boolean isLeaf(DTNode d) {
+		if (d.getTrueNode() != null || d.getFalseNode() != null) {
+			return false;
+		}
+		return true;
 	}
 
 	private static void createTree() {
@@ -56,11 +89,9 @@ public class Main {
 						curr.setTrueNode(leaf);
 						curr = root;
 					}
-				} 
-				else if(i.getAtt(att) && curr.getTrueNode() != null){
+				} else if (i.getAtt(att) && curr.getTrueNode() != null) {
 					curr = curr.getTrueNode();
-				}
-				else if (!i.getAtt(att) && curr.getFalseNode() == null) {
+				} else if (!i.getAtt(att) && curr.getFalseNode() == null) {
 					if (!isLastAtt(att, gains.size() - 1)) {
 						curr.setFalseNode(new DTNode(gains.get(att + 1)
 								.getAttribute()));
@@ -71,8 +102,7 @@ public class Main {
 						curr.setFalseNode(leaf);
 						curr = root;
 					}
-				}
-				else if(!i.getAtt(att) && curr.getFalseNode() != null){
+				} else if (!i.getAtt(att) && curr.getFalseNode() != null) {
 					curr = curr.getFalseNode();
 				}
 			}
@@ -110,12 +140,13 @@ public class Main {
 		}
 	}
 
-	private static void readDataFile(String fname) throws IOException {
+	private static List<Instance> readDataFile(String fname) throws IOException {
 		/*
 		 * format of names file: names of categories, separated by spaces names
 		 * of attributes category followed by true's and false's for each
 		 * instance
 		 */
+		List<Instance> inst = new ArrayList<Instance>();
 		System.out.println("Reading data from file " + fname);
 		Scanner din = new Scanner(new InputStreamReader(
 				ClassLoader.getSystemResourceAsStream(fname)));
@@ -132,8 +163,10 @@ public class Main {
 		numAtts = attNames.size();
 		System.out.println(numAtts + " attributes");
 
-		allInstances = readInstances(din);
+		inst = readInstances(din);
 		din.close();
+		return inst;
+
 	}
 
 	private static List<Instance> readInstances(Scanner din) {
