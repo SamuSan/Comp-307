@@ -1,10 +1,10 @@
 package main;
 
 public class DTNode {
-	private DTNode trueNode;
-	private DTNode falseNode;
+	private DTNode trueNode = null;
+	private DTNode falseNode = null;
 	private String attribute;
-	private String category;
+	private int category;
 
 	public DTNode(String attribute) {
 		super();
@@ -34,17 +34,18 @@ public class DTNode {
 		return falseNode;
 	}
 
-	public String getCategory() {
+	public int getCategory() {
 		return category;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setCategory(int i) {
+		this.category = i;
 	}
 
 	@Override
 	public String toString() {
-		return "DTNode "+ attribute + "]";
+
+		return "DTNode " + attribute ;
 	}
 
 }

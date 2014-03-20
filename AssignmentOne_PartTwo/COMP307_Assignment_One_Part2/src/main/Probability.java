@@ -5,7 +5,7 @@ public class Probability {
 	private final double trueDie;
 	private final double falseLive;
 	private final double falseDie;
-	private final String cat;
+	private final String attribute;
 	private final double totalCases;
 	private double prob = 0;
 
@@ -16,7 +16,7 @@ public class Probability {
 		this.trueDie = trueDie;
 		this.falseLive = falseLive;
 		this.falseDie = falseDie;
-		this.cat = cat;
+		this.attribute = cat;
 		this.totalCases = totalCases;
 		calcPaPb();
 		d(this);
@@ -41,18 +41,16 @@ public class Probability {
 		return prob;
 	}
 
-	public String getCat() {
-		return cat;
+	public String getAttribute() {
+		return attribute;
 	}
 
 	@Override
 	public String toString() {
-		return "Probability [trueLive=" + trueLive + ", trueDie=" + trueDie
-				+ ", falseLive=" + falseLive + ", falseDie=" + falseDie
-				+ ", cat=" + cat + ", totalCases=" + totalCases
-				+ ", totalProb=" + prob + "]";
+		return "Probability "
+				+ ", cat=" + attribute +  " prob = "+ prob + "]";
 	}
 private void d(Object o){
-	System.out.println(o);
+//	System.out.println(o);
 }
 }

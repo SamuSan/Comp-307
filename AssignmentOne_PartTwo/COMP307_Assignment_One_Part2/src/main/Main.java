@@ -19,74 +19,94 @@ public class Main {
 	private static List<String> categoryNames;
 	private static List<String> attNames;
 	private static List<Instance> allInstances;
-	private static HashMap<String,Double> percentages = new HashMap<String,Double>();
+	private static HashMap<String, Double> percentages = new HashMap<String, Double>();
 	private static ArrayList<Probability> gains = new ArrayList<Probability>();
 
 	private static String hepatitisTesting = "hepatitis-test.data";
 	private static String hepatitisTraining = "hepatitis-training.data";
-	
-	private static DTNode root=null;
-	
-	private static int k =1;
+
+	private static DTNode root = null;
+
+	private static int k = 1;
 
 	public static void main(String[] args) throws IOException {
-	readDataFile(hepatitisTraining);
-	doInformationGainCalc();
-	d("/////////////////////////////");
-	for (Probability p : gains) {
-		d(p.toString());
+		readDataFile(hepatitisTraining);
+		doInformationGainCalc();
+
+		createTree();
+		d(root.toString());
 	}
-	//createTree();
-	}
-	private static void createTree(){
-		root = new DTNode();
-		DTNode currNode = root;
+
+	private static void createTree() {
+		DTNode curr = new DTNode();
+		root = new DTNode(gains.get(0).getAttribute());
+		curr = root;
+
 		for (Instance i : allInstances) {
 			for (int att = 0; att < gains.size(); att++) {
-				String query = 	gains.get(att).getCat();
-				if(i.vals.get(attNames.indexOf(query)) && currNode.getTrueNode()==null){
-					currNode.setTrueNode(new DTNode(query));
-					currNode = currNode.getTrueNode();
+
+				if (i.getAtt(att) && curr.getTrueNode() == null) {
+					if (!isLastAtt(att, gains.size() - 1)) {
+						curr.setTrueNode(new DTNode(gains.get(att + 1)
+								.getAttribute()));
+						curr = curr.getTrueNode();
+					} else {
+						DTNode leaf = new DTNode();
+						leaf.setCategory(i.getCategory());
+						curr.setTrueNode(leaf);
+						curr = root;
+					}
+				} 
+				else if(i.getAtt(att) && curr.getTrueNode() != null){
+					curr = curr.getTrueNode();
 				}
-				else if (!i.vals.get(attNames.indexOf(query)) && currNode.getFalseNode()==null){
-					currNode.setFalseNode(new DTNode(query));
-					currNode = currNode.getFalseNode();
+				else if (!i.getAtt(att) && curr.getFalseNode() == null) {
+					if (!isLastAtt(att, gains.size() - 1)) {
+						curr.setFalseNode(new DTNode(gains.get(att + 1)
+								.getAttribute()));
+						curr = curr.getFalseNode();
+					} else {
+						DTNode leaf = new DTNode();
+						leaf.setCategory(i.getCategory());
+						curr.setFalseNode(leaf);
+						curr = root;
+					}
+				}
+				else if(!i.getAtt(att) && curr.getFalseNode() != null){
+					curr = curr.getFalseNode();
 				}
 			}
-			currNode.setCategory(categoryNames.get(i.getCategory()));
-			d(currNode.getCategory()+ currNode.toString());
-			currNode = root;
 		}
 		d("Done");
 	}
 
-
-	private static void doInformationGainCalc(){
-		int idx=0;
+	private static void doInformationGainCalc() {
+		int idx = 0;
 
 		while (idx < attNames.size()) {
 			double trueLiveCount = 0;
 			double trueDieCount = 0;
-			double falseDieCount=0;
-			double falseLiveCount=0;
+			double falseDieCount = 0;
+			double falseLiveCount = 0;
 			for (Instance inst : allInstances) {
-				if(inst.vals.get(idx)==true && inst.category ==0){
+				if (inst.vals.get(idx) == true && inst.category == 0) {
 					trueLiveCount++;
-				}
-				else if(inst.vals.get(idx)==true && inst.category ==1){
+				} else if (inst.vals.get(idx) == true && inst.category == 1) {
 					trueDieCount++;
 				}
-				if(inst.vals.get(idx)==false && inst.category ==0){
+				if (inst.vals.get(idx) == false && inst.category == 0) {
 					falseLiveCount++;
-				}
-				else if(inst.vals.get(idx)==false && inst.category ==1){
+				} else if (inst.vals.get(idx) == false && inst.category == 1) {
 					falseDieCount++;
 				}
 			}
-			double totalCases = trueDieCount+trueLiveCount+falseDieCount+falseLiveCount;
-			gains.add(new Probability(trueLiveCount, trueDieCount, falseLiveCount, falseDieCount, attNames.get(idx), totalCases));
+			double totalCases = trueDieCount + trueLiveCount + falseDieCount
+					+ falseLiveCount;
+			gains.add(new Probability(trueLiveCount, trueDieCount,
+					falseLiveCount, falseDieCount, attNames.get(idx),
+					totalCases));
 			idx++;
-			Collections.sort(gains,new ProbabilityComparator());
+			Collections.sort(gains, new ProbabilityComparator());
 		}
 	}
 
@@ -122,7 +142,8 @@ public class Main {
 		String ln;
 		while (din.hasNext()) {
 			Scanner line = new Scanner(din.nextLine());
-			instances.add(new Instance(categoryNames.indexOf(line.next()), line));
+			instances
+					.add(new Instance(categoryNames.indexOf(line.next()), line));
 		}
 		System.out.println("Read " + instances.size() + " instances");
 		return instances;
@@ -157,9 +178,16 @@ public class Main {
 		}
 
 	}
-	
-private static void d(Object o){
-	System.out.println(o.toString());
-}
+
+	private static boolean isLastAtt(int i, int j) {
+		if (i != j) {
+			return false;
+		}
+		return true;
+	}
+
+	private static void d(Object o) {
+		System.out.println(o.toString());
+	}
 
 }
