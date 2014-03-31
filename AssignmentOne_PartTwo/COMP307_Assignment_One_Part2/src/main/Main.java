@@ -18,7 +18,7 @@ public class Main {
 	private static int numAtts;
 	private static List<String> categoryNames;
 	private static List<String> attNames;
-	private static List<Instance> traingingInstances;
+	private static ArrayList<Instance> traingingInstances;
 	private static List<Instance> testInstances;
 	private static HashMap<String, Double> percentages = new HashMap<String, Double>();
 	private static ArrayList<Probability> gains = new ArrayList<Probability>();
@@ -32,7 +32,8 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		traingingInstances = readDataFile(hepatitisTraining);
-		doInformationGainCalc();
+		gains = 	doInformationGainCalc(traingingInstances);
+	
 		//createTree();
 
 		testInstances = readDataFile(hepatitisTesting);
@@ -123,6 +124,10 @@ public class Main {
 
 		//if instances is empty
 		if(instances.size()==0){
+			DTNode leaf = new DTNode();
+			ArrayList<Probability> probs = doInformationGainCalc(instances);
+			
+			return leaf;
 			 
 		}
 			//return a leaf node containing the name and probability of the overall most probable class (ie, the baseline predictor)
@@ -157,7 +162,8 @@ public class Main {
 		return null;
 	}
 
-	private static void doInformationGainCalc() {
+	private static ArrayList<Probability> doInformationGainCalc(ArrayList<Instance> instances) {
+		ArrayList<Probability> probs = new ArrayList<Probability>();
 		int idx = 0;
 
 		while (idx < attNames.size()) {
@@ -165,7 +171,7 @@ public class Main {
 			double trueDieCount = 0;
 			double falseDieCount = 0;
 			double falseLiveCount = 0;
-			for (Instance inst : traingingInstances) {
+			for (Instance inst : instances) {
 				if (inst.vals.get(idx) == true && inst.category == 0) {
 					trueLiveCount++;
 				} else if (inst.vals.get(idx) == true && inst.category == 1) {
@@ -179,22 +185,23 @@ public class Main {
 			}
 			double totalCases = trueDieCount + trueLiveCount + falseDieCount
 					+ falseLiveCount;
-			gains.add(new Probability(trueLiveCount, trueDieCount,
+			probs.add(new Probability(trueLiveCount, trueDieCount,
 					falseLiveCount, falseDieCount, attNames.get(idx),
 					totalCases));
 			idx++;
 		//	Collections.sort(gains, new ProbabilityComparator());
 		}
-		Collections.sort(gains, new ProbabilityComparator());
+		Collections.sort(probs, new ProbabilityComparator());
+		return probs;
 	}
 
-	private static List<Instance> readDataFile(String fname) throws IOException {
+	private static ArrayList<Instance> readDataFile(String fname) throws IOException {
 		/*
 		 * format of names file: names of categories, separated by spaces names
 		 * of attributes category followed by true's and false's for each
 		 * instance
 		 */
-		List<Instance> inst = new ArrayList<Instance>();
+		ArrayList<Instance> inst = new ArrayList<Instance>();
 		System.out.println("Reading data from file " + fname);
 		Scanner din = new Scanner(new InputStreamReader(
 				ClassLoader.getSystemResourceAsStream(fname)));
@@ -217,9 +224,9 @@ public class Main {
 
 	}
 
-	private static List<Instance> readInstances(Scanner din) {
+	private static ArrayList<Instance> readInstances(Scanner din) {
 		/* instance = classname and space separated attribute values */
-		List<Instance> instances = new ArrayList<Instance>();
+		ArrayList<Instance> instances = new ArrayList<Instance>();
 		String ln;
 		while (din.hasNext()) {
 			Scanner line = new Scanner(din.nextLine());

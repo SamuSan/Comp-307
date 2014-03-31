@@ -1,12 +1,13 @@
 package main;
 
 public class Probability {
-	private final double trueLive;
-	private final double trueDie;
-	private final double falseLive;
-	private final double falseDie;
-	private final String attribute;
-	private final double totalCases;
+	private double trueLive=0.0;
+	private double trueDie=0.0;
+	private double falseLive=0.0;
+	private double falseDie=0.0;
+	private String attribute="";
+	private double totalCases=0.0;
+
 	private double prob = 0;
 
 	public Probability(double trueLive, double trueDie, double falseLive,
@@ -15,11 +16,15 @@ public class Probability {
 		this.trueLive = trueLive;
 		this.trueDie = trueDie;
 		this.falseLive = falseLive;
+		
 		this.falseDie = falseDie;
 		this.attribute = cat;
 		this.totalCases = totalCases;
 		calcPaPb();
 		d(this);
+		
+	}
+	public Probability(){
 		
 	}
 
@@ -43,6 +48,13 @@ public class Probability {
 
 	public String getAttribute() {
 		return attribute;
+	}
+	
+	public double getProb() {
+		return prob;
+	}
+	public void setProb(double prob) {
+		this.prob = prob;
 	}
 
 	@Override

@@ -5,6 +5,7 @@ public class DTNode {
 	private DTNode falseNode = null;
 	private String attribute;
 	private int category=-1;
+	private Probability probability;
 
 	public DTNode(String attribute) {
 		super();
