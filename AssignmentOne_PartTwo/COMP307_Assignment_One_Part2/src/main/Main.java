@@ -18,7 +18,7 @@ public class Main {
 	private static int numAtts;
 	private static List<String> categoryNames;
 	private static List<String> attNames;
-	private static List<Instance> allInstances;
+	private static List<Instance> traingingInstances;
 	private static List<Instance> testInstances;
 	private static HashMap<String, Double> percentages = new HashMap<String, Double>();
 	private static ArrayList<Probability> gains = new ArrayList<Probability>();
@@ -26,21 +26,24 @@ public class Main {
 	private static String hepatitisTesting = "hepatitis-test.data";
 	private static String hepatitisTraining = "hepatitis-training.data";
 
-	private static DTNode root = null;
+	private static DTNode decisionTree = null;
 
 	private static int k = 1;
 
 	public static void main(String[] args) throws IOException {
-		allInstances = readDataFile(hepatitisTraining);
+		traingingInstances = readDataFile(hepatitisTraining);
 		doInformationGainCalc();
-		createTree();
+		//createTree();
 
 		testInstances = readDataFile(hepatitisTesting);
-		d(allInstances.size());
-		for (Instance i : allInstances) {
+		d(traingingInstances.size());
+		for (Instance i : traingingInstances) {
 			//System.out.println(i.getAtt(attNames.indexOf("BIGLIVER")));
 		}
 		//doTest();
+		for (Probability p : gains) {
+			System.out.println(p.toString());
+		}
 	}
 
 	private static void doTest() {
@@ -50,7 +53,7 @@ public class Main {
 	}
 
 	private static void doClassify(Instance i) {
-		DTNode curr = root;
+		DTNode curr = decisionTree;
 		while (!isLeaf(curr)) {
 			if (i.getAtt(attNames.indexOf(curr.getAttribute()))) {
 				curr = curr.getTrueNode();
@@ -74,44 +77,84 @@ public class Main {
 		return true;
 	}
 
-	private static void createTree() {
-		DTNode curr = new DTNode();
-		root = new DTNode(gains.get(0).getAttribute());
-		curr = root;
+//	private static void createTree() {
+//		DTNode curr = new DTNode();
+//		root = new DTNode(gains.get(0).getAttribute());
+//		curr = root;
+//
+//		for (Instance i : allInstances) {
+//			for (int att = 0; att < gains.size(); att++) {
+//				String currAtt = gains.get(att).getAttribute();
+//				if (i.getAtt(att) && curr.getTrueNode() == null) {
+//					if (!isLastAtt(att, gains.size() - 1)) {
+//						curr.setTrueNode(new DTNode(gains.get(att + 1)
+//								.getAttribute()));
+//						curr = curr.getTrueNode();
+//					} else {
+//						DTNode leaf = new DTNode();
+//						leaf.setCategory(i.getCategory());
+//						curr.setTrueNode(leaf);
+//						curr = root;
+//					}
+//				} else if (i.getAtt(att) && curr.getTrueNode() != null) {
+//					curr = curr.getTrueNode();
+//				} else if (!i.getAtt(att) && curr.getFalseNode() == null) {
+//					if (!isLastAtt(att, gains.size() - 1)) {
+//						curr.setFalseNode(new DTNode(gains.get(att + 1)
+//								.getAttribute()));
+//						curr = curr.getFalseNode();
+//					} else {
+//						DTNode leaf = new DTNode();
+//						leaf.setCategory(i.getCategory());
+//						curr.setFalseNode(leaf);
+//						curr = root;
+//					}
+//				} else if (!i.getAtt(att) && curr.getFalseNode() != null) {
+//					curr = curr.getFalseNode();
+//				}
+//			}
+//		}
+//		d("Done");
+//	}
+	private static DTNode buildTree(ArrayList<Instance> instances, ArrayList<String> attributes  ) {
+		
 
-		for (Instance i : allInstances) {
-			for (int att = 0; att < gains.size(); att++) {
-				String currAtt = gains.get(att).getAttribute();
-				if (i.getAtt(att) && curr.getTrueNode() == null) {
-					if (!isLastAtt(att, gains.size() - 1)) {
-						curr.setTrueNode(new DTNode(gains.get(att + 1)
-								.getAttribute()));
-						curr = curr.getTrueNode();
-					} else {
-						DTNode leaf = new DTNode();
-						leaf.setCategory(i.getCategory());
-						curr.setTrueNode(leaf);
-						curr = root;
-					}
-				} else if (i.getAtt(att) && curr.getTrueNode() != null) {
-					curr = curr.getTrueNode();
-				} else if (!i.getAtt(att) && curr.getFalseNode() == null) {
-					if (!isLastAtt(att, gains.size() - 1)) {
-						curr.setFalseNode(new DTNode(gains.get(att + 1)
-								.getAttribute()));
-						curr = curr.getFalseNode();
-					} else {
-						DTNode leaf = new DTNode();
-						leaf.setCategory(i.getCategory());
-						curr.setFalseNode(leaf);
-						curr = root;
-					}
-				} else if (!i.getAtt(att) && curr.getFalseNode() != null) {
-					curr = curr.getFalseNode();
-				}
-			}
+
+
+		//if instances is empty
+		if(instances.size()==0){
+			 
 		}
-		d("Done");
+			//return a leaf node containing the name and probability of the overall most probable class (ie, the baseline predictor)
+		//if instances are pure
+			//return a leaf node containing the name of the class of the instances
+				//in the node and probability 1 
+		//if attributes is empty
+			//return a leaf node containing the name and probability of the majority class of the instances in the node (choose randomly if classes are equal)
+//else find best attribute: for each attribute
+		//separate instances  instances for
+			//into two sets:
+				//instances for which the attribute is true, and 
+				//instances for which the attribute is false
+					//compute purity of each set.
+					//if weighted average purity of these sets is best so far
+							//bestAtt = this attribute
+							//bestInstsTrue = set of true instances 
+							//bestInstsFalse = set of false instances
+			//build subtrees using the remaining attributes:
+			//left = BuildNode(bestInstsTrue, attributes - bestAtt) 
+			//right = BuildNode(bestInstsFalse, attributes - bestAttr)
+//return Node containing (bestAtt, left, right)
+		
+		
+		
+		
+		
+		
+		
+		
+
+		return null;
 	}
 
 	private static void doInformationGainCalc() {
@@ -122,7 +165,7 @@ public class Main {
 			double trueDieCount = 0;
 			double falseDieCount = 0;
 			double falseLiveCount = 0;
-			for (Instance inst : allInstances) {
+			for (Instance inst : traingingInstances) {
 				if (inst.vals.get(idx) == true && inst.category == 0) {
 					trueLiveCount++;
 				} else if (inst.vals.get(idx) == true && inst.category == 1) {
@@ -140,8 +183,9 @@ public class Main {
 					falseLiveCount, falseDieCount, attNames.get(idx),
 					totalCases));
 			idx++;
-			Collections.sort(gains, new ProbabilityComparator());
+		//	Collections.sort(gains, new ProbabilityComparator());
 		}
+		Collections.sort(gains, new ProbabilityComparator());
 	}
 
 	private static List<Instance> readDataFile(String fname) throws IOException {
