@@ -35,8 +35,9 @@ public class Main {
 
 		trainingInstances = readDataFile(hepatitisTraining);
 //		gains = doInformationGainCalc(trainingInstances);
-		buildTree(trainingInstances, attNames);
+	DTNode decTree  = 	buildTree(trainingInstances, attNames);
 		testInstances = readDataFile(hepatitisTesting);
+		d(decTree.getAttribute());
 
 	}
 
@@ -103,7 +104,7 @@ public class Main {
 			// compute purity of each set.
 			// if weighted average purity of these sets is best so far
 			// bestAtt = this attribute
-		
+		d("Best Att : "+bestAtt);
 		ArrayList<Instance> trueInst = new ArrayList<Instance>();
 		ArrayList<Instance> falseInst = new ArrayList<Instance>();
 		for (Instance instance : instances) {
@@ -119,15 +120,13 @@ public class Main {
 			// build subtrees using the remaining attributes:
 		attributes.remove(bestAtt);
 
-			// left = BuildNode(bestInstsTrue, attributes - bestAtt)
-			// right = BuildNode(bestInstsFalse, attributes - bestAttr)
-			// return Node containing (bestAtt, left, right)
+			DTNode left = buildTree(trueInst, attributes);
+			if(bestAtt.equals("FEMALE")){
+				d("PAUSE");
+			}
+			DTNode right = buildTree(falseInst, attributes);
+			 return new  DTNode (bestAtt, left, right);
 		}
-
-	
-
-
-		return null;
 	}
 
 //	private static DTNode getBaseLine() {
@@ -165,7 +164,7 @@ public class Main {
 		int classOne = 0;
 		int classTwo = 0;
 		for (Instance i : inst) {
-			if (i.getCategory() == 1) {
+			if (i.getCategory() == 0) {
 				classOne++;
 			} else {
 				classTwo++;
@@ -174,11 +173,11 @@ public class Main {
 		int cat=0;
 		int prob =0;
 		if(classOne > classTwo){
-			cat =  classOne;
+			cat =  0;
 			prob = (classOne / (classOne + classTwo));
 		}
 		else if(classOne < classTwo){
-			cat =  classTwo;
+			cat =  1;
 			prob = (classTwo / (classOne + classTwo));
 		}
 		else{
