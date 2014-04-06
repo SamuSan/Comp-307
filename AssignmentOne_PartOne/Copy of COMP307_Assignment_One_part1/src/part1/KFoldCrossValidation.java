@@ -8,13 +8,13 @@ import java.util.List;
 
 import flowers.Iris;
 
-public class KCrossFoldValidation {
+public class KFoldCrossValidation {
 
 	private static ArrayList<Iris> flowers = new ArrayList<Iris>();
 	private static ArrayList<Iris> trainers = new ArrayList<Iris>();
 	private static int K = 3;
 
-	public KCrossFoldValidation(ArrayList<Iris> flowers) {
+	public KFoldCrossValidation(ArrayList<Iris> flowers) {
 		this.flowers = flowers;
 		doKCrossFold();
 	}
