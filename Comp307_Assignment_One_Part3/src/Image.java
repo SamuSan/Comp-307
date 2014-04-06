@@ -35,7 +35,7 @@ public class Image {
 		return height;
 	}
 
-	public boolean checkImageFeature(Feature f) {
+	public int checkImageFeature(Feature f) {
 		int sum = 0;
 		for (int i = 0; i < f.row.length; i++) {
 			if (pixelMatch(f.row[i], f.col[i], f.sign[i])) {
@@ -44,7 +44,7 @@ public class Image {
 			
 		}
 
-		return sum >= 3 ? true : false;
+		return sum >= 3 ? 1 : 0;
 	}
 
 	private boolean pixelMatch(int i, int j, boolean b) {

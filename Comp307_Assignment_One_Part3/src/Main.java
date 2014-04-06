@@ -30,7 +30,7 @@ peceptron();
 		for (Image i : images) {
 			d("Image : " + i);
 			for (Feature f : features) {
-				
+	
 				d(i.checkImageFeature(f));
 				
 			}
@@ -44,6 +44,7 @@ peceptron();
 	}
 
 	private static void generateFeatures() {
+		weights.add(1.0);
 	int max = new Random().nextInt(80-50) + 50;
 		for (int i = 0; i < max; i++) {
 			features.add(new Feature(seed));
