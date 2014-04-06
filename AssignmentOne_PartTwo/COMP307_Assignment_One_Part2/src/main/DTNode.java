@@ -4,9 +4,7 @@ public class DTNode {
 	private DTNode trueNode = null;
 	private DTNode falseNode = null;
 	private String attribute;
-	private int category=-1;
-	private Probability probability;
-	private int prob =0;
+
 
 	public DTNode(String attribute, DTNode trueNode, DTNode falseNode) {
 		super();
@@ -38,16 +36,6 @@ public class DTNode {
 		return falseNode;
 	}
 
-	public int getCategory() {
-		return category;
-	}
-
-	public void setCategory(int i) {
-		this.category = i;
-	}
-public void setProb(int e){
-	this.prob=e;
-}
 	@Override
 	public String toString() {
 

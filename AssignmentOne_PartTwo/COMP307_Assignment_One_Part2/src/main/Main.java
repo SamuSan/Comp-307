@@ -37,39 +37,67 @@ public class Main {
 //		gains = doInformationGainCalc(trainingInstances);
 	DTNode decTree  = 	buildTree(trainingInstances, attNames);
 		testInstances = readDataFile(hepatitisTesting);
-		d(decTree.getAttribute());
-
-	}
-
-	private static void doClassify(Instance i) {
-		DTNode curr = decisionTree;
-		while (!isLeaf(curr)) {
-			if (i.getAtt(attNames.indexOf(curr.getAttribute()))) {
-				curr = curr.getTrueNode();
-			} else if (!i.getAtt(attNames.indexOf(curr.getAttribute()))) {
-				curr = curr.getFalseNode();
+		double success =0;
+		double count =0;
+		for (Instance i : testInstances) {
+			count ++;
+		DTLeaf d = 	findClass(decTree, i);
+		d(categoryNames.get(d.getCategory())+":"+ categoryNames.get(i.getCategory()));
+		if(categoryNames.get(d.getCategory()) ==  categoryNames.get(i.getCategory())){
+			success++;
+		}
+		}
+		for (Instance traInstance : trainingInstances) {
+			for (Instance teIncstance : testInstances) {
+				int difCount=0;
+				for (boolean b : traInstance.vals) {
+					for (boolean  bol	 : teIncstance.vals) {
+					
+						if(b != bol){
+							difCount++;
+//							d("Differ");
+						}
+					}
+				}
+				if(difCount ==0){
+					d(traInstance + "::" + teIncstance);
+				}
 			}
+			
+			
 		}
-		if (curr.getCategory() == i.getCategory()) {
-			d("Correct");
-		} else {
-			d("Wrong");
-		}
+		d(success /count + "% Success");		
 
 	}
 
-	private static boolean isLeaf(DTNode d) {
-		if (d.getCategory() == -1) {
-			return false;
+	private static DTLeaf findClass(DTNode node, Instance i ){
+		
+//		DTNode d = node;
+		if(node instanceof DTLeaf){
+			return (DTLeaf) node;
 		}
-		return true;
+		
+		if (i.getAtt(attNames.indexOf(node.getAttribute()))) {
+//		node = node.getTrueNode();
+		node = 	findClass(node.getTrueNode(), i);
+	} else if (!i.getAtt(attNames.indexOf(node.getAttribute()))) {
+//		node = node.getFalseNode();
+	node = 	findClass(node.getFalseNode(), i);
 	}
+
+		
+		
+		
+return (DTLeaf) node;
+	}
+
+
 
 	private static DTNode buildTree(ArrayList<Instance> instances,
 			ArrayList<String> attributes) {
 		// if instances is empty
 		if (instances.size() == 0) {
-			DTNode leaf = getMajority(trainingInstances);
+			DTLeaf leaf = getMajority(trainingInstances);
 			// return a leaf node containing the name and probability of the
 			// overall
 			// most probable class (ie, the baseline predictor)
@@ -78,7 +106,7 @@ public class Main {
 
 		// if instances are pure
 		if(isPure(instances)){
-			DTNode leaf = new DTNode();
+			DTLeaf leaf = new DTLeaf();
 			leaf.setCategory(instances.get(0).getCategory());
 			leaf.setProb(1);
 			// return a leaf node containing the name of the class of the instances
@@ -90,7 +118,7 @@ public class Main {
 			// return a leaf node containing the name and probability of the
 			// majority class of the instances in the node (choose randomly if
 			// classes are equal)	
-			DTNode leaf = getMajority(instances);
+			DTLeaf leaf = getMajority(instances);
 			return leaf;
 		}
 		// else find best attribute:
@@ -159,7 +187,7 @@ public class Main {
 //		leaf.setProb(prob);
 //		return leaf;
 //	}
-	private static DTNode getMajority(ArrayList<Instance> inst) {
+	private static <T extends DTNode> T getMajority(ArrayList<Instance> inst) {
 		Random r = new Random();
 		int classOne = 0;
 		int classTwo = 0;
@@ -184,10 +212,10 @@ public class Main {
 			cat =  r.nextInt(2);
 			prob = 1;
 		}
-		DTNode leaf = new DTNode();
+		DTLeaf leaf = new DTLeaf();
 		leaf.setCategory(cat);
 		leaf.setProb(prob);
-		return leaf;
+		return (T) leaf;
 	}
 	private static boolean isPure(ArrayList<Instance> inst) {
 		int lastCat=-1;
