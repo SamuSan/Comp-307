@@ -10,26 +10,29 @@ import java.util.StringTokenizer;
 public class Main {
 	private static List<Image> images = new ArrayList<Image>();
 	private static List<Feature> features = new ArrayList<Feature>();
+	private static List<Double> weights = new ArrayList<Double>();
 	private static int seed =0;
 	private final static String fileName = "image.data";
 
 	public static void main(String[] args) throws IOException  {
 		setUp();
-	for (Feature f : features) {
-		d(f.toString());
-	}
+		d("num features: " + features.size());
+		for (Double y : weights) {
+			d(y);
+		}
+//	for (Feature f : features) {
+//		d(f.toString());
+//	}
 peceptron();
 	}
 
 	private static void peceptron() {
 		for (Image i : images) {
+			d("Image : " + i);
 			for (Feature f : features) {
-				if(f.weight(i) == 0){
-					d("Awesome cuntsticks");
-				}
-				else{
-					d("Fucksticks");
-				}
+				
+				d(i.checkImageFeature(f));
+				
 			}
 		}
 		
@@ -37,7 +40,6 @@ peceptron();
 
 	private static void setUp() throws IOException {
 		readData(fileName);
-		d(images.size());
 		generateFeatures();
 	}
 
@@ -45,6 +47,7 @@ peceptron();
 	int max = new Random().nextInt(80-50) + 50;
 		for (int i = 0; i < max; i++) {
 			features.add(new Feature(seed));
+			weights.add(new Random().nextDouble());
 		}
 	}
 
@@ -61,17 +64,13 @@ peceptron();
 			category = scan.nextLine().substring(1);
 			String size = scan.nextLine();
 			StringTokenizer tokens = new StringTokenizer(size);
-d(category);
 			int rows = Integer.valueOf(tokens.nextToken(" "));
-			d(rows);
 			
 			int cols = Integer.valueOf(tokens.nextToken());
-d(cols);
 			int [][] newImage = new int [rows][cols];
 			String pixels = scan.nextLine();
 			pixels+=scan.nextLine();
 			char[] pix = pixels.toCharArray();
-			d(pix.length);
 			int pos =0;
 			for (int r = 0; r < rows; r++) {
 				for (int c = 0; c < cols; c++) {
@@ -88,4 +87,71 @@ d(cols);
 	private static void d(Object o) {
 		System.out.println(o);
 	}
+	
+//	private void calculateWeights() {
+//		int errorRate = 0;
+//		double count = 0;
+//
+//		do{
+//			
+//			errorRate = 0;
+//			for(int i = 0 ; i < images.size() ; i ++){
+//				Image image = images.get(i);
+//				double sum = 0;
+//				
+//				for(int j = 0 ; j < perceptron.getFeatureLength(); j ++){
+//					sum += (image.getValue(j) * perceptron.getWeight(j));
+//				}
+//
+//
+//				//+ve example and wrong
+//				if(image.getType() == 0 && (sum < 0)){
+//					addToWeight(1, image);
+//					errorRate++;
+//				}
+//				//-ve example and wrong
+//				else if(image.getType() == 1 && (sum >= 0)){
+//					addToWeight(-1,image);
+//					errorRate++;
+//				}
+//
+//				
+//			}
+//
+//			
+//			count++;
+//			try {
+//				Thread.sleep(20);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			
+//		} while (errorRate != 0);
+//		System.out.println("Done in " + count +" steps");
+//
+//		
+//	}
+//	
+//	private void createFeatures() {
+//
+//		weights.add((double) 1);
+//		for (int i = 0; i < 50; i++) {
+//			List<Pixel> pixels = new ArrayList<Pixel>();
+//			List<Boolean> values = new ArrayList<Boolean>();
+//
+//			for (int j = 0; j < 4; j++) {
+//				pixels.add(new Pixel(rand.nextInt(height), rand.nextInt(height)));
+//				values.add(createRandBoolean());
+//			}
+//
+//			weights.add(rand.nextDouble());
+//			features.add(new Feature(pixels, values));
+//
+//		}
+//
+//		for (Feature f : features) {
+//			System.out.println(f.toString());
+//		}
+//	}
 }
