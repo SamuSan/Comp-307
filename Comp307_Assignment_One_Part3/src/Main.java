@@ -16,13 +16,6 @@ public class Main {
 
 	public static void main(String[] args) throws IOException  {
 		setUp();
-		d("num features: " + features.size());
-		for (Double y : weights) {
-			d(y);
-		}
-//	for (Feature f : features) {
-//		d(f.toString());
-//	}
 peceptron();
 	}
 
@@ -30,14 +23,61 @@ peceptron();
 		for (Image i : images) {
 			d("Image : " + i);
 			for (Feature f : features) {
-	
+	//sum weights times value of feature on image
 				d(i.checkImageFeature(f));
 				
 			}
 		}
-		
+		doWeightCalc();
 	}
 
+	private static void doWeightCalc(){
+		int errorRate = 0;
+		double count = 0;
+
+		do{
+			
+			errorRate = 0;
+			for(int i = 0 ; i < images.size() ; i ++){
+				Image image = images.get(i);
+				double sum = 0;
+				
+				for(int j = 0 ; j < features.size(); j ++){
+					sum += (image.getFeatureValue(j) * weights.get(j));
+				}
+
+
+				//+ve example and wrong
+				if(image.getType() == 0 && (sum < 0)){
+					image.addToFeature(1, i);
+					errorRate++;
+				}
+				//-ve example and wrong
+				else if(image.getType() == 1 && (sum >= 0)){
+					image.addToFeature(-1,i);
+					errorRate++;
+				}
+
+				
+			}
+
+			
+			count++;
+			try {
+				Thread.sleep(20);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		} while (errorRate != 0);
+		System.out.println("Done in " + count +" steps");
+
+			
+	}
+	
+	
+	
 	private static void setUp() throws IOException {
 		readData(fileName);
 		generateFeatures();

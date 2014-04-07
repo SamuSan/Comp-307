@@ -16,7 +16,7 @@ public class Main {
 	private static List<String> categoryNames;
 	private static ArrayList<String> attNames;
 	private static ArrayList<Instance> trainingInstances;
-	private static List<Instance> testInstances;
+	private static ArrayList<Instance> testInstances;
 //	private static HashMap<String, Double> percentages = new HashMap<String, Double>();
 //	private static ArrayList<Probability> gains = new ArrayList<Probability>();
 
@@ -30,20 +30,21 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 
 		trainingInstances = readDataFile(hepatitisTraining);
+		testInstances = readDataFile(hepatitisTesting);
 //		gains = doInformationGainCalc(trainingInstances);
 		 ArrayList<String> attributes = new ArrayList<String>(attNames);
 	 decTree  = 	buildTree(trainingInstances, attributes);
-		testInstances = readDataFile(hepatitisTesting);
+
 		double success =0;
 		double count =0;
 		for (Instance i : trainingInstances) {
 			count ++;
-			if(count ==4){
-				d(i);
-				d("STOP");
-			}
+//			if(count ==4){
+//				d(i);
+//				d("STOP");
+//			}
 		DTLeaf d = 	findClass(decTree, i);
-		d(categoryNames.get(d.getCategory())+":"+ categoryNames.get(i.getCategory()));
+//		d(categoryNames.get(d.getCategory())+":"+ categoryNames.get(i.getCategory()));
 		if(categoryNames.get(d.getCategory()) ==  categoryNames.get(i.getCategory())){
 			success++;
 		}
@@ -96,10 +97,10 @@ return (DTLeaf) node;
 		}
 		else{
 		String	bestAtt = doInformationGainCalc(attributes, instances).get(0).getAttribute();
-		if(bestAtt.equals("STEROID")){
-			d("Best Att : "+bestAtt);
-		}
-		d("Best Att : "+bestAtt);
+//		if(bestAtt.equals("STEROID")){
+//			d("Best Att : "+bestAtt);
+//		}
+//		d("Best Att : "+bestAtt);
 		ArrayList<Instance> trueInst = new ArrayList<Instance>();
 		ArrayList<Instance> falseInst = new ArrayList<Instance>();
 		for (Instance instance : instances) {
@@ -117,7 +118,7 @@ return (DTLeaf) node;
 				
 			}
 		}
-		attributes.remove(bestAtt);// new list here????
+//		attributes.remove(bestAtt);// new list here????
 
 			DTNode trueNode = buildTree(trueInst, attNext);
 			DTNode falseNode = buildTree(falseInst, attNext);
@@ -130,6 +131,7 @@ return (DTLeaf) node;
 		Random r = new Random();
 		double classOne = 0;
 		double classTwo = 0;
+		double prob =0;
 		for (Instance i : inst) {
 			if (i.getCategory() == 0) {
 				classOne++;
@@ -138,7 +140,7 @@ return (DTLeaf) node;
 			}
 		}
 		int cat=0;
-		double prob =0;
+
 		if(classOne > classTwo){
 			cat =  0;
 			
@@ -148,11 +150,13 @@ return (DTLeaf) node;
 			cat =  1;
 			prob = classTwo / (classOne + classTwo);
 		}
+
 		else{
 			d("even");
 			cat =  r.nextInt(2);
 			prob = 1;
 		}
+		d(prob);
 		DTLeaf leaf = new DTLeaf();
 		leaf.setCategory(cat);
 		leaf.setProb(prob);

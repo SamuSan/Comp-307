@@ -1,10 +1,13 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Image {
 	private final int width;
 	private final int height;
 	private String kind = "";
 	private int[][] pix;
 	private boolean[][] pixBool;
-
+	private List<Integer> featureValues = new ArrayList<Integer>();
 	public Image(int[][] pixels, String kind) {
 		super();
 		this.width = pixels.length;
@@ -43,7 +46,7 @@ public class Image {
 			}
 			
 		}
-
+		featureValues.add(sum);
 		return sum >= 3 ? 1 : 0;
 	}
 
@@ -52,6 +55,15 @@ public class Image {
 			return true;
 		}
 		return false;
+	}
+	public int getFeatureValue(int i){
+		return featureValues.get(i);
+	}
+	public int getType(){
+		return kind.equals("yes") ? 1  :  0;
+	}
+	public void addToFeature(int e,int i){
+	featureValues.set(i, featureValues.get(i)+e);	
 	}
 	@Override
 	public String toString(){
