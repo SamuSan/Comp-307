@@ -35,6 +35,7 @@ public class Main {
 		
 		
 		double success = 0;
+		double baseLineSuccess = 0;
 		double count = 0;
 		for (Instance i : testInstances) {
 			count++;
@@ -43,10 +44,16 @@ public class Main {
 					.getCategory())) {
 				success++;
 			}
+			if(categoryNames.get(getBaseLine(testInstances)) == categoryNames.get(i
+					.getCategory())){
+				baseLineSuccess++;
+			}
 		}
-
-		d(success / count + "% Success");
-		decTree.report("");
+System.out.printf("%4.2f Success\n",(success / count)*100 );
+System.out.printf("%4.2f Success\n",(baseLineSuccess / count)*100 );
+doMultipleRuns();
+//		decTree.report("");
+		
 
 	}
 
@@ -140,6 +147,36 @@ public class Main {
 		leaf.setCategory(cat);
 		leaf.setProb(prob);
 		return (T) leaf;
+	}
+	@SuppressWarnings("unchecked")
+	private static int getBaseLine(ArrayList<Instance> inst) {
+		Random r = new Random();
+		double classOne = 0;
+		double classTwo = 0;
+		double prob = 0;
+		for (Instance i : inst) {
+			if (i.getCategory() == 0) {
+				classOne++;
+			} else {
+				classTwo++;
+			}
+		}
+		int cat = 0;
+
+		if (classOne > classTwo) {
+			cat = 0;
+
+			prob = classOne / (classOne + classTwo);
+		} else if (classOne < classTwo) {
+			cat = 1;
+			prob = classTwo / (classOne + classTwo);
+		}
+
+		else {
+			cat = r.nextInt(2);
+			prob = 1;
+		}
+		return cat;
 	}
 
 	private static boolean isPure(ArrayList<Instance> inst) {
@@ -260,9 +297,46 @@ public class Main {
 		}
 
 	}
-
+private static void doMultipleRuns() throws IOException{
+	ArrayList<Double> successRates = new ArrayList<Double> ();
+	for(int j=10; j>0;j--){
+		if (j == 10) {
+			hepatitisTraining = "hepatitis-training-run"+j+".dat";
+			hepatitisTesting = "hepatitis-test-run"+j+".dat";
+		}
+		else{
+			hepatitisTraining = "hepatitis-training-run0"+j+".dat";
+			hepatitisTesting = "hepatitis-test-run0"+j+".dat";
+		}
+		trainingInstances = readDataFile(hepatitisTraining);
+		testInstances = readDataFile(hepatitisTesting);
+		ArrayList<String> attributes = new ArrayList<String>(attNames);
+		decTree = buildTree(trainingInstances, attributes);
+		
+		
+		double success = 0;
+		double count = 0;
+		for (Instance i : testInstances) {
+			count++;
+			DTLeaf d = findClass(decTree, i);
+			if (categoryNames.get(d.getCategory()) == categoryNames.get(i
+					.getCategory())) {
+				success++;
+			}
+		}
+		successRates.add((success / count));
+		
+		
+		
+	}
+	double averagedSuccess =0;
+	for (Double double1 : successRates) {
+		averagedSuccess+=double1;
+	}
+	System.out.printf("%4.2f Averaged Success Across 10 Files\n",(averagedSuccess / successRates.size())*100 );
+}
 	private static void d(Object o) {
-		// System.out.println(o.toString());
+//		 System.out.println(o.toString());
 	}
 
 }
