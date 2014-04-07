@@ -42,9 +42,9 @@ public class DTNode {
 		return "DTNode " + attribute ;
 	}
 public void report(String indent){
-	System.out.format("%s%s = True",indent, attribute);
-	trueNode.report(indent ="\t");
-	System.out.format("%s%s = False",indent, attribute);
-	trueNode.report(indent ="\t");
+	System.out.format("%s%s = True:\n",indent, attribute);
+	trueNode.report(indent +" ");
+	System.out.format("%s%s = False:\n",indent, attribute);
+	falseNode.report(indent +" ");
 }
 }

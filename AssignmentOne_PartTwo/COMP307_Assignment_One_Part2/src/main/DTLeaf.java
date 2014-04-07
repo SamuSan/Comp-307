@@ -1,24 +1,16 @@
 package main;
 
 public class DTLeaf extends DTNode {
-	@Override
-	public String toString() {
-		return "DTLeaf [category=" + category + ", probability=" + probability
-				+ ", prob=" + prob + "]";
-	}
 
 	private int category=-1;
 	private Probability probability;
 	private double prob =0;
 	public DTLeaf(String attribute, DTNode trueNode, DTNode falseNode) {
 		super(attribute, trueNode, falseNode);
-		// TODO Auto-generated constructor stub
 	}
 
 	public DTLeaf() {
-		// TODO Auto-generated constructor stub
 	}
-
 	public int getCategory() {
 		return category;
 	}
@@ -42,10 +34,16 @@ public class DTLeaf extends DTNode {
 	public void setProb(double prob) {
 		this.prob = prob;
 	}
+	@Override
+	public String toString() {
+		return "DTLeaf [category=" + category + ", probability=" + probability
+				+ ", prob=" + prob + "]";
+	}
+
 	public void report(String indent){
 		
 		String cat = category == 0 ? "Live" : "Die";
-System.out.format("%sClass %s, prob=44.2f\n", indent,cat,prob);
+System.out.format("%sClass %s, prob=%4.2f\n", indent,cat,prob);
 	}
 
 }
