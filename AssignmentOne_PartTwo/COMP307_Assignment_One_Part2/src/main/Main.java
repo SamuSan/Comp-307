@@ -37,20 +37,21 @@ public class Main {
 		double success = 0;
 		double baseLineSuccess = 0;
 		double count = 0;
-		for (Instance i : testInstances) {
+		for (Instance i : trainingInstances) {
 			count++;
 			DTLeaf d = findClass(decTree, i);
 			if (categoryNames.get(d.getCategory()) == categoryNames.get(i
 					.getCategory())) {
 				success++;
 			}
-			if(categoryNames.get(getBaseLine(testInstances)) == categoryNames.get(i
+			if(categoryNames.get(getBaseLine(trainingInstances)) == categoryNames.get(i
 					.getCategory())){
 				baseLineSuccess++;
 			}
 		}
 System.out.printf("%4.2f Success\n",(success / count)*100 );
-System.out.printf("%4.2f Success\n",(baseLineSuccess / count)*100 );
+System.out.printf("%4.2f Baseline Success\n",(baseLineSuccess / count)*100 );
+System.out.println();
 doMultipleRuns();
 //		decTree.report("");
 		
