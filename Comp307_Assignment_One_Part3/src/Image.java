@@ -44,9 +44,9 @@ public class Image {
 			if (pixelMatch(f.row[i], f.col[i], f.sign[i])) {
 				sum++;
 			}
-			
+			featureValues.add(sum);
 		}
-		featureValues.add(sum);
+
 		return sum >= 3 ? 1 : 0;
 	}
 
@@ -60,7 +60,7 @@ public class Image {
 		return featureValues.get(i);
 	}
 	public int getType(){
-		return kind.equals("yes") ? 1  :  0;
+		return kind.equals("Yes") ? 1  :  0;
 	}
 	public void addToFeature(int e,int i){
 	featureValues.set(i, featureValues.get(i)+e);	

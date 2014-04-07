@@ -21,10 +21,9 @@ peceptron();
 
 	private static void peceptron() {
 		for (Image i : images) {
-			d("Image : " + i);
 			for (Feature f : features) {
 	//sum weights times value of feature on image
-				d(i.checkImageFeature(f));
+				i.checkImageFeature(f);
 				
 			}
 		}
@@ -45,35 +44,19 @@ peceptron();
 				for(int j = 0 ; j < features.size(); j ++){
 					sum += (image.getFeatureValue(j) * weights.get(j));
 				}
-
-
-				//+ve example and wrong
 				if(image.getType() == 0 && (sum < 0)){
 					image.addToFeature(1, i);
 					errorRate++;
 				}
-				//-ve example and wrong
 				else if(image.getType() == 1 && (sum >= 0)){
 					image.addToFeature(-1,i);
 					errorRate++;
 				}
-
-				
 			}
-
-			
 			count++;
-			try {
-				Thread.sleep(20);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			
 		} while (errorRate != 0);
-		System.out.println("Done in " + count +" steps");
-
-			
+		System.out.printf("Converged in %f steps" ,count);
 	}
 	
 	
@@ -88,7 +71,10 @@ peceptron();
 	int max = new Random().nextInt(80-50) + 50;
 		for (int i = 0; i < max; i++) {
 			features.add(new Feature(seed));
-			weights.add(new Random().nextDouble());
+
+		double d = new Random().nextDouble();
+		d("Adding to weights "+ d);
+		weights.add(d);
 		}
 	}
 

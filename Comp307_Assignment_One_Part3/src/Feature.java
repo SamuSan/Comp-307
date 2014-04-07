@@ -17,14 +17,6 @@ public class Feature {
 		}
 	}
 
-//	public int weight(Image image) {
-//		int sum = 0;
-//		for (int i = 0; i < 4; i++) {
-//			if (image.getImageFeature(this.row[i], this.col[i]) == this.sign[i])
-//				sum++;
-//		}
-//		return (sum >= 3) ? 1 : 0;
-//	}
 
 	@Override
 	public String toString() {
