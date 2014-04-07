@@ -44,11 +44,14 @@ peceptron();
 				for(int j = 0 ; j < features.size(); j ++){
 					sum += (image.getFeatureValue(j) * weights.get(j));
 				}
+				// 0 is posi
 				if(image.getType() == 0 && (sum < 0)){
 					image.addToFeature(1, i);
 					errorRate++;
 				}
+				//1 is neg
 				else if(image.getType() == 1 && (sum >= 0)){
+//					weights.set(arg0, arg1)
 					image.addToFeature(-1,i);
 					errorRate++;
 				}
