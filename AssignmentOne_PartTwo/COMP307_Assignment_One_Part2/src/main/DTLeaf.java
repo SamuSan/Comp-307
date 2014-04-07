@@ -42,5 +42,10 @@ public class DTLeaf extends DTNode {
 	public void setProb(double prob) {
 		this.prob = prob;
 	}
+	public void report(String indent){
+		
+		String cat = category == 0 ? "Live" : "Die";
+System.out.format("%sClass %s, prob=44.2f\n", indent,cat,prob);
+	}
 
 }
