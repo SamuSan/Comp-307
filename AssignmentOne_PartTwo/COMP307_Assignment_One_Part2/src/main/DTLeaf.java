@@ -9,7 +9,7 @@ public class DTLeaf extends DTNode {
 
 	private int category=-1;
 	private Probability probability;
-	private int prob =0;
+	private double prob =0;
 	public DTLeaf(String attribute, DTNode trueNode, DTNode falseNode) {
 		super(attribute, trueNode, falseNode);
 		// TODO Auto-generated constructor stub
@@ -35,11 +35,11 @@ public class DTLeaf extends DTNode {
 		this.probability = probability;
 	}
 
-	public int getProb() {
+	public double getProb() {
 		return prob;
 	}
 
-	public void setProb(int prob) {
+	public void setProb(double prob) {
 		this.prob = prob;
 	}
 

@@ -1,14 +1,10 @@
 package main;
 
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.ObjectInputStream.GetField;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -21,13 +17,13 @@ public class Main {
 	private static ArrayList<String> attNames;
 	private static ArrayList<Instance> trainingInstances;
 	private static List<Instance> testInstances;
-	private static HashMap<String, Double> percentages = new HashMap<String, Double>();
-	private static ArrayList<Probability> gains = new ArrayList<Probability>();
+//	private static HashMap<String, Double> percentages = new HashMap<String, Double>();
+//	private static ArrayList<Probability> gains = new ArrayList<Probability>();
 
 	private static String hepatitisTesting = "hepatitis-test.data";
 	private static String hepatitisTraining = "hepatitis-training.data";
 
-	private static DTNode decisionTree = null;
+	private static DTNode decTree = null;
 
 	private static int k = 1;
 
@@ -35,37 +31,25 @@ public class Main {
 
 		trainingInstances = readDataFile(hepatitisTraining);
 //		gains = doInformationGainCalc(trainingInstances);
-	DTNode decTree  = 	buildTree(trainingInstances, attNames);
+		 ArrayList<String> attributes = new ArrayList<String>(attNames);
+	 decTree  = 	buildTree(trainingInstances, attributes);
 		testInstances = readDataFile(hepatitisTesting);
 		double success =0;
 		double count =0;
-		for (Instance i : testInstances) {
+		for (Instance i : trainingInstances) {
 			count ++;
+			if(count ==4){
+				d(i);
+				d("STOP");
+			}
 		DTLeaf d = 	findClass(decTree, i);
 		d(categoryNames.get(d.getCategory())+":"+ categoryNames.get(i.getCategory()));
 		if(categoryNames.get(d.getCategory()) ==  categoryNames.get(i.getCategory())){
 			success++;
 		}
 		}
-		for (Instance traInstance : trainingInstances) {
-			for (Instance teIncstance : testInstances) {
-				int difCount=0;
-				for (boolean b : traInstance.vals) {
-					for (boolean  bol	 : teIncstance.vals) {
-					
-						if(b != bol){
-							difCount++;
-//							d("Differ");
-						}
-					}
-				}
-				if(difCount ==0){
-					d(traInstance + "::" + teIncstance);
-				}
-			}
 			
-			
-		}
+		
 		d(success /count + "% Success");		
 
 	}
@@ -95,43 +79,26 @@ return (DTLeaf) node;
 
 	private static DTNode buildTree(ArrayList<Instance> instances,
 			ArrayList<String> attributes) {
-		// if instances is empty
 		if (instances.size() == 0) {
 			DTLeaf leaf = getMajority(trainingInstances);
-			// return a leaf node containing the name and probability of the
-			// overall
-			// most probable class (ie, the baseline predictor)
 			return leaf;
 		}
 
-		// if instances are pure
 		if(isPure(instances)){
 			DTLeaf leaf = new DTLeaf();
 			leaf.setCategory(instances.get(0).getCategory());
-			leaf.setProb(1);
-			// return a leaf node containing the name of the class of the instances
-			// in the node and probability 1
+			leaf.setProb(1.0);
 			return leaf;
 		}
-		// if attributes is empty
 		if(attributes.size() == 0){
-			// return a leaf node containing the name and probability of the
-			// majority class of the instances in the node (choose randomly if
-			// classes are equal)	
 			DTLeaf leaf = getMajority(instances);
 			return leaf;
 		}
-		// else find best attribute:
 		else{
 		String	bestAtt = doInformationGainCalc(attributes, instances).get(0).getAttribute();
-			// for each attribute
-			// separate instances instances for
-			// into two sets:
-			// instances for which the attribute is true, and
-			// instances for which the attribute is false
-			// compute purity of each set.
-			// if weighted average purity of these sets is best so far
-			// bestAtt = this attribute
+		if(bestAtt.equals("STEROID")){
+			d("Best Att : "+bestAtt);
+		}
 		d("Best Att : "+bestAtt);
 		ArrayList<Instance> trueInst = new ArrayList<Instance>();
 		ArrayList<Instance> falseInst = new ArrayList<Instance>();
@@ -143,54 +110,26 @@ return (DTLeaf) node;
 				falseInst.add(instance);
 			}
 		}
-			// bestInstsTrue = set of true instances
-			// bestInstsFalse = set of false instances
-			// build subtrees using the remaining attributes:
-		attributes.remove(bestAtt);
-
-			DTNode left = buildTree(trueInst, attributes);
-			if(bestAtt.equals("FEMALE")){
-				d("PAUSE");
+		ArrayList<String> attNext = new ArrayList<String>();
+		for (String string : attributes) {
+			if(! string.equals(bestAtt)){
+				attNext.add(string);
+				
 			}
-			DTNode right = buildTree(falseInst, attributes);
-			 return new  DTNode (bestAtt, left, right);
+		}
+		attributes.remove(bestAtt);// new list here????
+
+			DTNode trueNode = buildTree(trueInst, attNext);
+			DTNode falseNode = buildTree(falseInst, attNext);
+		 return new  DTNode (bestAtt, trueNode, falseNode);
 		}
 	}
 
-//	private static DTNode getBaseLine() {
-//		Random r = new Random();
-//		int classOne = 0;
-//		int classTwo = 0;
-//		for (Instance i : trainingInstances) {
-//			if (i.getCategory() == 1) {
-//				classOne++;
-//			} else {
-//				classTwo++;
-//			}
-//		}
-//		int cat=0;
-//		int prob =0;
-//		if(classOne > classTwo){
-//			cat = classOne;
-//			prob = (classOne / (classOne + classTwo));
-//		}
-//		else if(classOne < classTwo){
-//			cat =  classTwo;
-//			prob = (classTwo / (classOne + classTwo));
-//		}
-//		else{
-//			cat = r.nextInt(2);
-//			prob = 1;
-//		}
-//		DTNode leaf = new DTNode();
-//		leaf.setCategory(cat);
-//		leaf.setProb(prob);
-//		return leaf;
-//	}
+	@SuppressWarnings("unchecked")
 	private static <T extends DTNode> T getMajority(ArrayList<Instance> inst) {
 		Random r = new Random();
-		int classOne = 0;
-		int classTwo = 0;
+		double classOne = 0;
+		double classTwo = 0;
 		for (Instance i : inst) {
 			if (i.getCategory() == 0) {
 				classOne++;
@@ -199,16 +138,18 @@ return (DTLeaf) node;
 			}
 		}
 		int cat=0;
-		int prob =0;
+		double prob =0;
 		if(classOne > classTwo){
 			cat =  0;
-			prob = (classOne / (classOne + classTwo));
+			
+			prob = classOne / (classOne + classTwo);
 		}
 		else if(classOne < classTwo){
 			cat =  1;
-			prob = (classTwo / (classOne + classTwo));
+			prob = classTwo / (classOne + classTwo);
 		}
 		else{
+			d("even");
 			cat =  r.nextInt(2);
 			prob = 1;
 		}
@@ -235,7 +176,7 @@ return (DTLeaf) node;
 		ArrayList<Probability> probs = new ArrayList<Probability>();
 		int idx = 0;
 
-		while (idx < attNames.size()) {
+		while (idx < atts.size()) {
 			double trueLiveCount = 0;
 			double trueDieCount = 0;
 			double falseDieCount = 0;
@@ -255,10 +196,9 @@ return (DTLeaf) node;
 			double totalCases = trueDieCount + trueLiveCount + falseDieCount
 					+ falseLiveCount;
 			probs.add(new Probability(trueLiveCount, trueDieCount,
-					falseLiveCount, falseDieCount, attNames.get(idx),
+					falseLiveCount, falseDieCount, atts.get(idx),
 					totalCases));
 			idx++;
-			// Collections.sort(gains, new ProbabilityComparator());
 		}
 		Collections.sort(probs, new ProbabilityComparator());
 		return probs;
@@ -337,13 +277,6 @@ return (DTLeaf) node;
 			return ans.toString();
 		}
 
-	}
-
-	private static boolean isLastAtt(int i, int j) {
-		if (i != j) {
-			return false;
-		}
-		return true;
 	}
 
 	private static void d(Object o) {
