@@ -7,7 +7,7 @@ public class Image {
 	private String kind = "";
 	private int[][] pix;
 	private boolean[][] pixBool;
-	private List<Integer> featureValues = new ArrayList<Integer>();
+	private List<Double> featureValues = new ArrayList<Double>();
 	public Image(int[][] pixels, String kind) {
 		super();
 		this.width = pixels.length;
@@ -39,7 +39,7 @@ public class Image {
 	}
 
 	public int checkImageFeature(Feature f) {
-		int sum = 0;
+		double sum = 0;
 		for (int i = 0; i < f.row.length; i++) {
 			if (pixelMatch(f.row[i], f.col[i], f.sign[i])) {
 				sum++;
@@ -56,13 +56,13 @@ public class Image {
 		}
 		return false;
 	}
-	public int getFeatureValue(int i){
+	public double getFeatureValue(int i){
 		return featureValues.get(i);
 	}
 	public int getType(){
 		return kind.equals("Yes") ? 1  :  0;
 	}
-	public void addToFeature(int e,int i){
+	public void adjustFeatureWeight(int e,int i){
 	featureValues.set(i, featureValues.get(i)+e);	
 	}
 	@Override

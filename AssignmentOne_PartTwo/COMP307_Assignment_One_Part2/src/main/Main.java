@@ -26,8 +26,13 @@ public class Main {
 	private static int k = 1;
 
 	public static void main(String[] args) throws IOException {
-		hepatitisTraining = args[0];
-		hepatitisTesting = args[1];
+		 if (args.length == 2) {
+			 hepatitisTraining = args[0];
+			 hepatitisTesting = args[1];
+		 } else {
+		 d("Two data files must be specified");
+		 }
+
 		trainingInstances = readDataFile(hepatitisTraining);
 		testInstances = readDataFile(hepatitisTesting);
 		ArrayList<String> attributes = new ArrayList<String>(attNames);
