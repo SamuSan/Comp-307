@@ -78,10 +78,10 @@ public class MathProblem
     // ------------------------------------------------------
     Class[] types = {
         // Return type of result-producing chromosome
-        CommandGene.FloatClass,
+        CommandGene.FloatClass};
         // ADF-relevant:
         // Return type of ADF 1
-        CommandGene.FloatClass};
+//        CommandGene.FloatClass};
     // Then, we define the arguments of the GP parts. Normally, only for ADF's
     // there is a specification here, otherwise it is empty as in first case.
     // -----------------------------------------------------------------------
@@ -90,7 +90,7 @@ public class MathProblem
         {},
         // ADF-relevant:
         // Arguments of ADF1: all 3 are float
-        {CommandGene.FloatClass, CommandGene.FloatClass, CommandGene.FloatClass}
+//        {CommandGene.FloatClass, CommandGene.FloatClass, CommandGene.FloatClass}
     };
     // Next, we define the set of available GP commands and terminals to use.
     // Please see package org.jgap.gp.function and org.jgap.gp.terminal
@@ -106,25 +106,25 @@ public class MathProblem
         new Sine(conf, CommandGene.FloatClass),
         new Exp(conf, CommandGene.FloatClass),
         new Subtract(conf, CommandGene.FloatClass),
-//        new Add(conf, CommandGene.FloatClass),
+        new Add(conf, CommandGene.FloatClass),
         new Pow(conf, CommandGene.FloatClass),
-        new Terminal(conf, CommandGene.FloatClass, 2.0d, 10.0d, true),
+        new Terminal(conf, CommandGene.FloatClass,-1.0d, 1.0d, false),
         // ADF-relevant:
         // Construct a reference to the ADF defined in the second nodeset
         // which has index 1 (second parameter of ADF-constructor).
         // Furthermore, the ADF expects three input parameters (see argTypes[1])
-        new ADF(conf, 1 , 3),
+//        new ADF(conf, 1 , 3),
     },
         // ADF-relevant:
         // and now the definition of ADF(1)
-        {
-        new Add3(conf, CommandGene.FloatClass),
-    }
+//        {
+//        new Add3(conf, CommandGene.FloatClass),
+//    }
     };
     // Here, we define the expected (optimal) output we want to achieve by the
     // function/formula to evolve by the GP.
     // -----------------------------------------------------------------------
-    Random random = new Random();
+//    Random random = new Random();
     // Randomly initialize function data (X-Y table) for x^4+x^3+x^2-x
     // ---------------------------------------------------------------
 //    for (int i = 0; i < 20; i++) {
@@ -175,6 +175,9 @@ public class MathProblem
     config.setMaxCrossoverDepth(8);
     config.setFitnessFunction(new MathProblem.FormulaFitnessFunction());
     config.setStrictProgramCreation(true);
+    config.setCrossoverProb(80.0f);
+    config.setMutationProb(20.0f);
+    config.setReproductionProb(0.0f);
     GPProblem problem = new MathProblem(config);
     // Create the genotype of the problem, i.e., define the GP commands and
     // terminals that can be used, and constrain the structure of the GP
@@ -186,7 +189,7 @@ public class MathProblem
     // if a satisfying result is found (fitness value almost 0), JGAP stops
     // earlier automatically.
     // --------------------------------------------------------------------
-    gp.evolve(800);
+    gp.evolve(1600);
     // Print the best solution so far to the console.
     // ----------------------------------------------
     gp.outputSolution(gp.getAllTimeBest());
