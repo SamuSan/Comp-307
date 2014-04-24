@@ -12,6 +12,7 @@ package main;
 
 
 import java.util.*;
+
 import org.jgap.*;
 import org.jgap.gp.*;
 import org.jgap.gp.function.*;
@@ -101,20 +102,21 @@ public class MathProblem
         // ----------------------------------------------------------
         vx = Variable.create(conf, "X", CommandGene.FloatClass),
         new Multiply(conf, CommandGene.FloatClass),
-        new Multiply3(conf, CommandGene.FloatClass),
+//        new Multiply3(conf, CommandGene.FloatClass),
         new Divide(conf, CommandGene.FloatClass),
-        new Sine(conf, CommandGene.FloatClass),
-        new Exp(conf, CommandGene.FloatClass),
+//        new Sine(conf, CommandGene.FloatClass),
+//        new Exp(conf, CommandGene.FloatClass),
         new Subtract(conf, CommandGene.FloatClass),
         new Add(conf, CommandGene.FloatClass),
         new Pow(conf, CommandGene.FloatClass),
-        new Terminal(conf, CommandGene.FloatClass,-1.0d, 1.0d, false),
+//        new Abs(conf, CommandGene.FloatClass),
+        new Terminal(conf, CommandGene.FloatClass,-1.0d, 1.0d, true),
         // ADF-relevant:
         // Construct a reference to the ADF defined in the second nodeset
         // which has index 1 (second parameter of ADF-constructor).
         // Furthermore, the ADF expects three input parameters (see argTypes[1])
 //        new ADF(conf, 1 , 3),
-    },
+    }
         // ADF-relevant:
         // and now the definition of ADF(1)
 //        {
@@ -170,13 +172,13 @@ public class MathProblem
     // a point score!
     // ----------------------------------------------------------------------
     config.setGPFitnessEvaluator(new DeltaGPFitnessEvaluator());
-    config.setMaxInitDepth(4);
+    config.setMaxInitDepth(6);
     config.setPopulationSize(1000);
     config.setMaxCrossoverDepth(8);
     config.setFitnessFunction(new MathProblem.FormulaFitnessFunction());
     config.setStrictProgramCreation(true);
-    config.setCrossoverProb(80.0f);
-    config.setMutationProb(20.0f);
+    config.setCrossoverProb(75.0f);
+    config.setMutationProb(25.0f);
     config.setReproductionProb(0.0f);
     GPProblem problem = new MathProblem(config);
     // Create the genotype of the problem, i.e., define the GP commands and
@@ -189,7 +191,7 @@ public class MathProblem
     // if a satisfying result is found (fitness value almost 0), JGAP stops
     // earlier automatically.
     // --------------------------------------------------------------------
-    gp.evolve(1600);
+    gp.evolve(800);
     // Print the best solution so far to the console.
     // ----------------------------------------------
     gp.outputSolution(gp.getAllTimeBest());
