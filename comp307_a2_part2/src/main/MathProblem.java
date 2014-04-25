@@ -164,7 +164,7 @@ public class MathProblem
    */
   public static void main(String[] args)
       throws Exception {
-    System.out.println("Formula to discover: X^4 + X^3 + X^2 - X");
+//    System.out.println("Formula to discover: X^4 + X^3 + X^2 - X");
     // Setup the algorithm's parameters.
     // ---------------------------------
     GPConfiguration config = new GPConfiguration();
