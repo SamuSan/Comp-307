@@ -114,9 +114,9 @@ public class MathProblem extends GPProblem {
 				// new Exp(conf, CommandGene.FloatClass),
 				new Subtract(conf, CommandGene.FloatClass),
 				new Add(conf, CommandGene.FloatClass),
-				new Pow(conf, CommandGene.FloatClass),
+//				new Pow(conf, CommandGene.FloatClass),
 				// new Abs(conf, CommandGene.FloatClass),
-				new Terminal(conf, CommandGene.FloatClass, -10.0d, 10.0d, true),
+				new Terminal(conf, CommandGene.FloatClass, -1.0d, 1.0d, true),
 		// ADF-relevant:
 		// Construct a reference to the ADF defined in the second nodeset
 		// which has index 1 (second parameter of ADF-constructor).
@@ -184,6 +184,14 @@ public class MathProblem extends GPProblem {
 			x[pos] = scan.nextFloat();
 			y[pos] = scan.nextFloat();
 			pos++;
+		}
+		System.out.println("X");
+		for (Float f : x) {
+			System.out.println(f);
+		}
+		System.out.println("Y");
+		for (Float f : y) {
+			System.out.println(f);
 		}
 		// Setup the algorithm's parameters.
 		// ---------------------------------
@@ -258,7 +266,7 @@ public class MathProblem extends GPProblem {
 					// get a defect
 					// rate.
 					// -------------------------------------------------------------------
-					error += Math.abs(result - y[i]);
+					error +=Math.pow(Math.abs(result - y[i]),2);
 					// If the error is too high, stop evlauation and return
 					// worst error
 					// possible.

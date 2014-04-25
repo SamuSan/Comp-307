@@ -1514,3 +1514,363 @@
 [25.04.2014 13:46:37,015] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 0.0
 [25.04.2014 13:46:37,015] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: (((X * X) - X) * ((X * X) - X)) + (1.0 ^ 8.0)
 [25.04.2014 13:46:37,016] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 4
+[25.04.2014 13:55:27,378] [main] INFO  org.jgap.gp.impl.GPGenotype  - Creating initial population
+[25.04.2014 13:55:27,381] [main] INFO  org.jgap.gp.impl.GPGenotype  - Mem free: 81.0 MB
+[25.04.2014 13:55:27,389] [main] INFO  org.jgap.gp.impl.GPPopulation  - Prototype program set
+[25.04.2014 13:55:27,536] [main] INFO  org.jgap.gp.impl.GPGenotype  - Mem free after creating population: 81.0 MB
+[25.04.2014 13:55:27,539] [main] INFO  org.jgap.gp.impl.GPGenotype  - Your configuration does not contain unused commands, this is good
+[25.04.2014 13:55:27,540] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 0, memory free: 79.1 MB
+[25.04.2014 13:55:27,633] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 77.28
+[25.04.2014 13:55:27,634] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: ((1.0 * X) - (X * X)) * ((1.0 ^ X) * (X * (X / -1.0)))
+[25.04.2014 13:55:27,634] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 4
+[25.04.2014 13:55:27,687] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 74.88
+[25.04.2014 13:55:27,687] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: ((X + X) * (X + -1.0)) + ((0.0 ^ 0.0) ^ (-1.0 * X))
+[25.04.2014 13:55:27,688] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 3
+[25.04.2014 13:55:27,781] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 73.07
+[25.04.2014 13:55:27,781] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: ((-1.0 - (X + X)) - X) * ((X ^ 0.0) - (X - 0.0))
+[25.04.2014 13:55:27,781] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 4
+[25.04.2014 13:55:27,863] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 64.38
+[25.04.2014 13:55:27,864] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: ((X + X) * (X + -1.0)) + ((X + 0.0) * X)
+[25.04.2014 13:55:27,864] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 3
+[25.04.2014 13:55:27,983] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 57.61
+[25.04.2014 13:55:27,983] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: ((X * X) + ((X + X) * (X + -1.0))) + (1.0 - X)
+[25.04.2014 13:55:27,983] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 4
+[25.04.2014 13:55:28,366] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 19.99
+[25.04.2014 13:55:28,366] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: ((X * ((X * X) - X)) * (X + -1.0)) + (1.0 + 1.0)
+[25.04.2014 13:55:28,367] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 5
+[25.04.2014 13:55:28,698] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 25, memory free: 74.7 MB
+[25.04.2014 13:55:29,279] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 0.0
+[25.04.2014 13:55:29,279] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: ((X * ((X * X) - X)) * (X + -1.0)) + (1.0 + 0.0)
+[25.04.2014 13:55:29,279] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 5
+[25.04.2014 13:55:29,636] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 50, memory free: 68.7 MB
+[25.04.2014 13:55:30,509] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 75, memory free: 64.8 MB
+[25.04.2014 13:55:31,272] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 100, memory free: 75.7 MB
+[25.04.2014 13:55:31,762] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 125, memory free: 72.7 MB
+[25.04.2014 13:55:32,249] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 150, memory free: 69.3 MB
+[25.04.2014 13:55:32,737] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 175, memory free: 64.0 MB
+[25.04.2014 13:55:33,226] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 200, memory free: 60.9 MB
+[25.04.2014 13:55:33,705] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 225, memory free: 73.6 MB
+[25.04.2014 13:55:34,198] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 250, memory free: 69.7 MB
+[25.04.2014 13:55:34,688] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 275, memory free: 65.9 MB
+[25.04.2014 13:55:35,170] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 300, memory free: 61.4 MB
+[25.04.2014 13:55:35,648] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 325, memory free: 72.1 MB
+[25.04.2014 13:55:36,132] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 350, memory free: 69.0 MB
+[25.04.2014 13:55:36,627] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 375, memory free: 65.5 MB
+[25.04.2014 13:55:37,106] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 400, memory free: 64.2 MB
+[25.04.2014 13:55:37,601] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 425, memory free: 59.4 MB
+[25.04.2014 13:55:38,092] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 450, memory free: 71.7 MB
+[25.04.2014 13:55:38,580] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 475, memory free: 69.4 MB
+[25.04.2014 13:55:39,071] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 500, memory free: 65.3 MB
+[25.04.2014 13:55:39,566] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 525, memory free: 65.0 MB
+[25.04.2014 13:55:40,049] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 550, memory free: 61.4 MB
+[25.04.2014 13:55:40,537] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 575, memory free: 72.8 MB
+[25.04.2014 13:55:41,026] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 600, memory free: 67.8 MB
+[25.04.2014 13:55:41,506] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 625, memory free: 66.8 MB
+[25.04.2014 13:55:42,001] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 650, memory free: 62.6 MB
+[25.04.2014 13:55:42,491] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 675, memory free: 59.6 MB
+[25.04.2014 13:55:42,972] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 700, memory free: 70.8 MB
+[25.04.2014 13:55:43,457] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 725, memory free: 66.1 MB
+[25.04.2014 13:55:43,946] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 750, memory free: 62.9 MB
+[25.04.2014 13:55:44,442] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 775, memory free: 57.5 MB
+[25.04.2014 13:55:44,934] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 0.0
+[25.04.2014 13:55:44,934] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: ((X * ((X * X) - X)) * (X + -1.0)) + (1.0 + 0.0)
+[25.04.2014 13:55:44,934] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 5
+[25.04.2014 13:59:20,366] [main] INFO  org.jgap.gp.impl.GPGenotype  - Creating initial population
+[25.04.2014 13:59:20,369] [main] INFO  org.jgap.gp.impl.GPGenotype  - Mem free: 81.0 MB
+[25.04.2014 13:59:20,378] [main] INFO  org.jgap.gp.impl.GPPopulation  - Prototype program set
+[25.04.2014 13:59:20,546] [main] INFO  org.jgap.gp.impl.GPGenotype  - Mem free after creating population: 81.0 MB
+[25.04.2014 13:59:20,549] [main] INFO  org.jgap.gp.impl.GPGenotype  - Your configuration does not contain unused commands, this is good
+[25.04.2014 13:59:20,550] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 0, memory free: 79.2 MB
+[25.04.2014 13:59:20,655] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 77.28
+[25.04.2014 13:59:20,655] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: ((0.0 - X) * (X / (1.0 / X))) * ((1.0 * 1.0) * (1.0 - X))
+[25.04.2014 13:59:20,656] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 4
+[25.04.2014 13:59:21,116] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 74.88
+[25.04.2014 13:59:21,117] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: ((X * X) - (X + X)) + ((X * X) - ((-1.0 ^ 1.0) ^ 1.0))
+[25.04.2014 13:59:21,117] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 4
+[25.04.2014 13:59:21,169] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 70.06
+[25.04.2014 13:59:21,170] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: 1.0 + (((X * X) - X) * (X * X))
+[25.04.2014 13:59:21,170] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 4
+[25.04.2014 13:59:21,270] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 63.86
+[25.04.2014 13:59:21,271] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: (((((X * X) - X) + 1.0) + (X * X)) - X) + (X * X)
+[25.04.2014 13:59:21,271] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 6
+[25.04.2014 13:59:21,578] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 57.59
+[25.04.2014 13:59:21,579] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: ((X * X) + (((X * X) ^ (X * -1.0)) - X)) + (X * X)
+[25.04.2014 13:59:21,580] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 5
+[25.04.2014 13:59:21,621] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 57.06
+[25.04.2014 13:59:21,622] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: (((X * X) + (((X * X) - X) - X)) - X) + (X * (X + X))
+[25.04.2014 13:59:21,622] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 6
+[25.04.2014 13:59:21,666] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 50.32
+[25.04.2014 13:59:21,666] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: ((X * X) + (((X * X) ^ (X * -1.0)) - X)) + (X * (X + X))
+[25.04.2014 13:59:21,666] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 5
+[25.04.2014 13:59:21,770] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 25, memory free: 65.4 MB
+[25.04.2014 13:59:22,433] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 36.78
+[25.04.2014 13:59:22,434] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: (((((X * X) + 1.0) ^ (X * -1.0)) - X) + (X * X)) + (X * X)
+[25.04.2014 13:59:22,434] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 6
+[25.04.2014 13:59:22,783] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 50, memory free: 67.5 MB
+[25.04.2014 13:59:22,866] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 20.00
+[25.04.2014 13:59:22,866] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: ((X * X) - X) * ((X * X) - X)
+[25.04.2014 13:59:22,866] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 3
+[25.04.2014 13:59:23,653] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 75, memory free: 71.7 MB
+[25.04.2014 13:59:45,464] [main] INFO  org.jgap.gp.impl.GPGenotype  - Creating initial population
+[25.04.2014 13:59:45,468] [main] INFO  org.jgap.gp.impl.GPGenotype  - Mem free: 81.0 MB
+[25.04.2014 13:59:45,476] [main] INFO  org.jgap.gp.impl.GPPopulation  - Prototype program set
+[25.04.2014 13:59:45,670] [main] INFO  org.jgap.gp.impl.GPGenotype  - Mem free after creating population: 81.0 MB
+[25.04.2014 13:59:45,673] [main] INFO  org.jgap.gp.impl.GPGenotype  - Your configuration does not contain unused commands, this is good
+[25.04.2014 13:59:45,675] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 0, memory free: 79.1 MB
+[25.04.2014 13:59:45,773] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 95.75
+[25.04.2014 13:59:45,774] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: X * ((X + X) + X)
+[25.04.2014 13:59:45,774] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 3
+[25.04.2014 13:59:45,832] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 87.64
+[25.04.2014 13:59:45,833] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: (X * ((X - 1.0) - (1.0 * 1.0))) + ((X + 1.0) * (1.0 * X))
+[25.04.2014 13:59:45,834] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 4
+[25.04.2014 13:59:45,976] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 64.37
+[25.04.2014 13:59:45,976] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: (X * 1.0) * (X * (((((X * X) - X) * (0.0 ^ 0.0)) - X) - 0.0))
+[25.04.2014 13:59:45,977] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 7
+[25.04.2014 13:59:46,255] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 44.37
+[25.04.2014 13:59:46,260] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: (X * ((((X - 1.0) * X) * X) - (X * X))) + (X ^ 0.0)
+[25.04.2014 13:59:46,261] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 6
+[25.04.2014 13:59:46,477] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 20.00
+[25.04.2014 13:59:46,477] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: (X * ((((X - 1.0) * X) * X) - (X * X))) + (X * X)
+[25.04.2014 13:59:46,477] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 6
+[25.04.2014 13:59:46,887] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 25, memory free: 62.4 MB
+[25.04.2014 13:59:47,778] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 50, memory free: 65.8 MB
+[25.04.2014 14:34:21,397] [main] INFO  org.jgap.gp.impl.GPGenotype  - Creating initial population
+[25.04.2014 14:34:21,401] [main] INFO  org.jgap.gp.impl.GPGenotype  - Mem free: 81.0 MB
+[25.04.2014 14:34:21,409] [main] INFO  org.jgap.gp.impl.GPPopulation  - Prototype program set
+[25.04.2014 14:34:21,575] [main] INFO  org.jgap.gp.impl.GPGenotype  - Mem free after creating population: 81.0 MB
+[25.04.2014 14:34:21,578] [main] INFO  org.jgap.gp.impl.GPGenotype  - Your configuration does not contain unused commands, this is good
+[25.04.2014 14:34:21,579] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 0, memory free: 79.2 MB
+[25.04.2014 14:34:21,681] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 66.61
+[25.04.2014 14:34:21,682] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: ((X + X) * (X + X)) * ((1.0 * X) ^ (X * 0.0))
+[25.04.2014 14:34:21,682] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 3
+[25.04.2014 14:34:21,828] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 34.86
+[25.04.2014 14:34:21,829] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: ((0.0 - X) - (X * 0.0)) * ((1.0 + (X * X)) * (1.0 - X))
+[25.04.2014 14:34:21,829] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 4
+[25.04.2014 14:34:21,918] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 33.49
+[25.04.2014 14:34:21,919] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: ((0.0 - X) * (1.0 - X)) * (X * X)
+[25.04.2014 14:34:21,919] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 3
+[25.04.2014 14:34:22,016] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 33.10
+[25.04.2014 14:34:22,017] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: (X + ((X + 0.0) + (1.0 * X))) * (X + -1.0)
+[25.04.2014 14:34:22,017] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 4
+[25.04.2014 14:34:22,057] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 20.78
+[25.04.2014 14:34:22,058] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: (((1.0 - X) * (1.0 - X)) * 1.0) * (((X * X) - 0.0) - 1.0)
+[25.04.2014 14:34:22,058] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 4
+[25.04.2014 14:34:22,111] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 4.74
+[25.04.2014 14:34:22,112] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: ((X - 1.0) - (X * X)) * ((0.0 - (X * X)) - (0.0 - X))
+[25.04.2014 14:34:22,112] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 4
+[25.04.2014 14:34:22,175] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 1.11
+[25.04.2014 14:34:22,176] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: ((X - 0.0) - (0.0 ^ 0.0)) * ((X * 1.0) * ((0.0 - X) * (1.0 - X)))
+[25.04.2014 14:34:22,176] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 4
+[25.04.2014 14:34:22,688] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 0.0
+[25.04.2014 14:34:22,688] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: (((1.0 - X) * (1.0 - X)) * (X * X)) + (X ^ 0.0)
+[25.04.2014 14:34:22,688] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 4
+[25.04.2014 14:34:22,768] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 25, memory free: 64.7 MB
+[25.04.2014 14:34:23,680] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 50, memory free: 67.9 MB
+[25.04.2014 14:34:24,461] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 75, memory free: 72.1 MB
+[25.04.2014 14:34:25,221] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 100, memory free: 77.7 MB
+[25.04.2014 14:34:25,722] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 125, memory free: 67.0 MB
+[25.04.2014 14:34:26,255] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 150, memory free: 72.5 MB
+[25.04.2014 14:34:26,735] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 175, memory free: 61.1 MB
+[25.04.2014 14:34:27,209] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 200, memory free: 67.6 MB
+[25.04.2014 14:34:27,675] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 225, memory free: 73.5 MB
+[25.04.2014 14:34:28,149] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 250, memory free: 62.3 MB
+[25.04.2014 14:34:28,632] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 275, memory free: 67.8 MB
+[25.04.2014 14:34:29,122] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 300, memory free: 71.6 MB
+[25.04.2014 14:34:29,599] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 325, memory free: 61.7 MB
+[25.04.2014 14:34:30,079] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 350, memory free: 67.4 MB
+[25.04.2014 14:34:30,554] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 375, memory free: 73.8 MB
+[25.04.2014 14:34:31,022] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 400, memory free: 63.8 MB
+[25.04.2014 14:34:31,484] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 425, memory free: 72.8 MB
+[25.04.2014 14:34:31,948] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 450, memory free: 62.2 MB
+[25.04.2014 14:34:32,416] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 475, memory free: 67.6 MB
+[25.04.2014 14:34:32,885] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 500, memory free: 72.9 MB
+[25.04.2014 14:34:33,357] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 525, memory free: 63.6 MB
+[25.04.2014 14:34:33,826] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 550, memory free: 69.0 MB
+[25.04.2014 14:34:34,293] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 575, memory free: 58.9 MB
+[25.04.2014 14:34:34,773] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 600, memory free: 64.6 MB
+[25.04.2014 14:34:35,242] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 625, memory free: 69.4 MB
+[25.04.2014 14:34:35,721] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 650, memory free: 61.5 MB
+[25.04.2014 14:34:36,206] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 675, memory free: 67.7 MB
+[25.04.2014 14:34:36,665] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 700, memory free: 59.2 MB
+[25.04.2014 14:34:37,130] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 725, memory free: 64.3 MB
+[25.04.2014 14:34:37,593] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 750, memory free: 70.4 MB
+[25.04.2014 14:34:38,059] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 775, memory free: 60.0 MB
+[25.04.2014 14:34:38,527] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 0.0
+[25.04.2014 14:34:38,527] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: (((1.0 - X) * (1.0 - X)) * (X * X)) + (X ^ 0.0)
+[25.04.2014 14:34:38,527] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 4
+[25.04.2014 14:35:05,476] [main] INFO  org.jgap.gp.impl.GPGenotype  - Creating initial population
+[25.04.2014 14:35:05,480] [main] INFO  org.jgap.gp.impl.GPGenotype  - Mem free: 81.0 MB
+[25.04.2014 14:35:05,488] [main] INFO  org.jgap.gp.impl.GPPopulation  - Prototype program set
+[25.04.2014 14:35:05,666] [main] INFO  org.jgap.gp.impl.GPGenotype  - Mem free after creating population: 81.0 MB
+[25.04.2014 14:35:05,668] [main] INFO  org.jgap.gp.impl.GPGenotype  - Your configuration does not contain unused commands, this is good
+[25.04.2014 14:35:05,669] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 0, memory free: 79.1 MB
+[25.04.2014 14:35:05,766] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 40.16
+[25.04.2014 14:35:05,768] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: ((X - 1.0) * (X - 1.0)) * ((X - 1.0) * X)
+[25.04.2014 14:35:05,768] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 3
+[25.04.2014 14:35:05,829] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 33.49
+[25.04.2014 14:35:05,830] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: (X * X) * ((X * X) - X)
+[25.04.2014 14:35:05,830] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 3
+[25.04.2014 14:35:05,881] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 1.11
+[25.04.2014 14:35:05,881] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: ((X - 1.0) * (0.0 + X)) * ((X - 1.0) * X)
+[25.04.2014 14:35:05,882] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 3
+[25.04.2014 14:35:06,801] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 25, memory free: 69.0 MB
+[25.04.2014 14:35:07,700] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 50, memory free: 75.9 MB
+[25.04.2014 14:35:07,731] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 0.0
+[25.04.2014 14:35:07,732] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: ((X + (((X - 1.0) * (0.0 + X)) * ((X - 1.0) * X))) + 1.0) - X
+[25.04.2014 14:35:07,732] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 6
+[25.04.2014 14:35:08,462] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 75, memory free: 67.2 MB
+[25.04.2014 14:35:09,197] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 100, memory free: 77.3 MB
+[25.04.2014 14:35:09,681] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 125, memory free: 71.2 MB
+[25.04.2014 14:35:10,131] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 150, memory free: 63.6 MB
+[25.04.2014 14:35:10,579] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 175, memory free: 71.0 MB
+[25.04.2014 14:35:11,034] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 200, memory free: 63.4 MB
+[25.04.2014 14:35:11,473] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 225, memory free: 72.3 MB
+[25.04.2014 14:35:11,913] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 250, memory free: 65.1 MB
+[25.04.2014 14:35:12,353] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 275, memory free: 73.7 MB
+[25.04.2014 14:35:12,798] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 300, memory free: 65.4 MB
+[25.04.2014 14:35:13,237] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 325, memory free: 74.5 MB
+[25.04.2014 14:35:13,678] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 350, memory free: 68.4 MB
+[25.04.2014 14:35:14,117] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 375, memory free: 63.5 MB
+[25.04.2014 14:35:14,561] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 400, memory free: 70.8 MB
+[25.04.2014 14:35:15,010] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 425, memory free: 62.6 MB
+[25.04.2014 14:35:15,461] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 450, memory free: 71.7 MB
+[25.04.2014 14:35:15,901] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 475, memory free: 66.6 MB
+[25.04.2014 14:35:16,354] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 500, memory free: 59.3 MB
+[25.04.2014 14:35:16,804] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 525, memory free: 69.8 MB
+[25.04.2014 14:35:17,246] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 550, memory free: 64.3 MB
+[25.04.2014 14:35:17,690] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 575, memory free: 59.8 MB
+[25.04.2014 14:35:18,140] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 600, memory free: 68.9 MB
+[25.04.2014 14:35:18,594] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 625, memory free: 61.3 MB
+[25.04.2014 14:35:19,037] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 650, memory free: 70.7 MB
+[25.04.2014 14:35:19,484] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 675, memory free: 64.0 MB
+[25.04.2014 14:35:19,927] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 700, memory free: 73.9 MB
+[25.04.2014 14:35:20,379] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 725, memory free: 64.7 MB
+[25.04.2014 14:35:20,826] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 750, memory free: 73.4 MB
+[25.04.2014 14:35:21,272] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 775, memory free: 64.2 MB
+[25.04.2014 14:35:21,711] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 0.0
+[25.04.2014 14:35:21,712] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: ((X + (((X - 1.0) * (0.0 + X)) * ((X - 1.0) * X))) + 1.0) - X
+[25.04.2014 14:35:21,712] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 6
+[25.04.2014 14:37:39,154] [main] INFO  org.jgap.gp.impl.GPGenotype  - Creating initial population
+[25.04.2014 14:37:39,160] [main] INFO  org.jgap.gp.impl.GPGenotype  - Mem free: 81.0 MB
+[25.04.2014 14:37:39,169] [main] INFO  org.jgap.gp.impl.GPPopulation  - Prototype program set
+[25.04.2014 14:37:39,337] [main] INFO  org.jgap.gp.impl.GPGenotype  - Mem free after creating population: 81.0 MB
+[25.04.2014 14:37:39,341] [main] INFO  org.jgap.gp.impl.GPGenotype  - Your configuration does not contain unused commands, this is good
+[25.04.2014 14:37:39,342] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 0, memory free: 79.1 MB
+[25.04.2014 14:37:39,435] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 0.0
+[25.04.2014 14:37:39,438] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: (X * -1.0) - (X * 0.0)
+[25.04.2014 14:37:39,438] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 2
+[25.04.2014 14:37:40,358] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 25, memory free: 66.7 MB
+[25.04.2014 14:37:41,194] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 50, memory free: 72.2 MB
+[25.04.2014 14:37:41,920] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 75, memory free: 61.3 MB
+[25.04.2014 14:37:42,640] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 100, memory free: 66.5 MB
+[25.04.2014 14:37:43,208] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 125, memory free: 72.2 MB
+[25.04.2014 14:37:43,637] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 150, memory free: 63.1 MB
+[25.04.2014 14:37:44,083] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 175, memory free: 69.1 MB
+[25.04.2014 14:37:44,514] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 200, memory free: 61.2 MB
+[25.04.2014 14:37:44,946] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 225, memory free: 69.0 MB
+[25.04.2014 14:37:45,372] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 250, memory free: 60.0 MB
+[25.04.2014 14:37:45,803] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 275, memory free: 67.0 MB
+[25.04.2014 14:37:46,236] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 300, memory free: 58.2 MB
+[25.04.2014 14:37:46,662] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 325, memory free: 63.1 MB
+[25.04.2014 14:37:47,091] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 350, memory free: 70.7 MB
+[25.04.2014 14:37:47,574] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 375, memory free: 62.6 MB
+[25.04.2014 14:37:48,023] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 400, memory free: 54.4 MB
+[25.04.2014 14:37:48,480] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 425, memory free: 59.5 MB
+[25.04.2014 14:37:48,912] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 450, memory free: 65.5 MB
+[25.04.2014 14:37:49,366] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 475, memory free: 55.9 MB
+[25.04.2014 14:37:49,811] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 500, memory free: 64.0 MB
+[25.04.2014 14:37:50,258] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 525, memory free: 53.7 MB
+[25.04.2014 14:37:50,693] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 550, memory free: 60.3 MB
+[25.04.2014 14:37:51,120] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 575, memory free: 66.1 MB
+[25.04.2014 14:37:51,545] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 600, memory free: 58.7 MB
+[25.04.2014 14:37:51,994] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 625, memory free: 64.1 MB
+[25.04.2014 14:37:52,423] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 650, memory free: 53.9 MB
+[25.04.2014 14:37:52,847] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 675, memory free: 60.7 MB
+[25.04.2014 14:37:53,285] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 700, memory free: 50.5 MB
+[25.04.2014 14:37:53,726] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 725, memory free: 56.5 MB
+[25.04.2014 14:37:54,159] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 750, memory free: 62.2 MB
+[25.04.2014 14:37:54,581] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 775, memory free: 52.9 MB
+[25.04.2014 14:37:55,013] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 0.0
+[25.04.2014 14:37:55,014] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: (X * -1.0) - (X * 0.0)
+[25.04.2014 14:37:55,014] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 2
+[25.04.2014 14:38:37,450] [main] INFO  org.jgap.gp.impl.GPGenotype  - Creating initial population
+[25.04.2014 14:38:37,453] [main] INFO  org.jgap.gp.impl.GPGenotype  - Mem free: 81.0 MB
+[25.04.2014 14:38:37,461] [main] INFO  org.jgap.gp.impl.GPPopulation  - Prototype program set
+[25.04.2014 14:38:37,634] [main] INFO  org.jgap.gp.impl.GPGenotype  - Mem free after creating population: 81.0 MB
+[25.04.2014 14:38:37,636] [main] INFO  org.jgap.gp.impl.GPGenotype  - Your configuration does not contain unused commands, this is good
+[25.04.2014 14:38:37,637] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 0, memory free: 79.1 MB
+[25.04.2014 14:38:37,753] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 0.0
+[25.04.2014 14:38:37,754] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: (((X * 1.0) * (1.0 + X)) * X) + 0.0
+[25.04.2014 14:38:37,754] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 4
+[25.04.2014 14:38:38,637] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 25, memory free: 68.2 MB
+[25.04.2014 14:38:39,481] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 50, memory free: 74.2 MB
+[25.04.2014 14:38:40,228] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 75, memory free: 63.9 MB
+[25.04.2014 14:38:40,960] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 100, memory free: 71.6 MB
+[25.04.2014 14:38:41,525] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 125, memory free: 61.4 MB
+[25.04.2014 14:38:41,986] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 150, memory free: 69.1 MB
+[25.04.2014 14:38:42,459] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 175, memory free: 58.8 MB
+[25.04.2014 14:38:42,950] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 200, memory free: 64.0 MB
+[25.04.2014 14:38:43,401] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 225, memory free: 70.5 MB
+[25.04.2014 14:38:43,862] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 250, memory free: 60.7 MB
+[25.04.2014 14:38:44,366] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 275, memory free: 65.4 MB
+[25.04.2014 14:38:44,825] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 300, memory free: 70.4 MB
+[25.04.2014 14:38:45,273] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 325, memory free: 60.6 MB
+[25.04.2014 14:38:45,740] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 350, memory free: 67.3 MB
+[25.04.2014 14:38:46,203] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 375, memory free: 58.7 MB
+[25.04.2014 14:38:46,653] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 400, memory free: 65.5 MB
+[25.04.2014 14:38:47,108] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 425, memory free: 56.8 MB
+[25.04.2014 14:38:47,620] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 450, memory free: 59.3 MB
+[25.04.2014 14:38:48,110] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 475, memory free: 66.1 MB
+[25.04.2014 14:38:48,620] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 500, memory free: 56.8 MB
+[25.04.2014 14:38:51,377] [main] INFO  org.jgap.gp.impl.GPGenotype  - Creating initial population
+[25.04.2014 14:38:51,382] [main] INFO  org.jgap.gp.impl.GPGenotype  - Mem free: 81.0 MB
+[25.04.2014 14:38:51,392] [main] INFO  org.jgap.gp.impl.GPPopulation  - Prototype program set
+[25.04.2014 14:38:51,565] [main] INFO  org.jgap.gp.impl.GPGenotype  - Mem free after creating population: 81.0 MB
+[25.04.2014 14:38:51,568] [main] INFO  org.jgap.gp.impl.GPGenotype  - Your configuration does not contain unused commands, this is good
+[25.04.2014 14:38:51,570] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 0, memory free: 79.1 MB
+[25.04.2014 14:38:51,695] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 819.25
+[25.04.2014 14:38:51,696] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: (X * X) + (((X * X) - (X - X)) - ((X - 1.0) - (X * X)))
+[25.04.2014 14:38:51,696] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 4
+[25.04.2014 14:38:51,765] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 232.91
+[25.04.2014 14:38:51,766] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: X * (((X - -1.0) - (X * X)) * ((-1.0 * -1.0) - X))
+[25.04.2014 14:38:51,766] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 4
+[25.04.2014 14:38:51,960] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 20.00
+[25.04.2014 14:38:51,961] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: ((1.0 - X) * (0.0 - X)) * ((X * X) + (X * -1.0))
+[25.04.2014 14:38:51,961] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 3
+[25.04.2014 14:38:52,743] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 25, memory free: 68.8 MB
+[25.04.2014 14:38:53,578] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 50, memory free: 77.3 MB
+[25.04.2014 14:38:54,344] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 75, memory free: 72.9 MB
+[25.04.2014 14:38:54,790] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 0.0
+[25.04.2014 14:38:54,790] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: (((X * X) - X) * ((X * X) - X)) + 1.0
+[25.04.2014 14:38:54,790] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 4
+[25.04.2014 14:38:55,094] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 100, memory free: 67.1 MB
+[25.04.2014 14:38:55,563] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 125, memory free: 76.6 MB
+[25.04.2014 14:38:56,009] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 150, memory free: 70.4 MB
+[25.04.2014 14:38:56,460] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 175, memory free: 64.4 MB
+[25.04.2014 14:38:56,906] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 200, memory free: 75.5 MB
+[25.04.2014 14:38:57,349] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 225, memory free: 70.6 MB
+[25.04.2014 14:38:57,808] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 250, memory free: 65.4 MB
+[25.04.2014 14:38:58,259] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 275, memory free: 60.7 MB
+[25.04.2014 14:38:58,709] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 300, memory free: 70.7 MB
+[25.04.2014 14:38:59,153] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 325, memory free: 66.7 MB
+[25.04.2014 14:38:59,603] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 350, memory free: 76.0 MB
+[25.04.2014 14:39:00,053] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 375, memory free: 68.5 MB
+[25.04.2014 14:39:00,511] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 400, memory free: 63.1 MB
+[25.04.2014 14:39:00,951] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 425, memory free: 73.8 MB
+[25.04.2014 14:39:01,398] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 450, memory free: 69.7 MB
+[25.04.2014 14:39:01,842] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 475, memory free: 60.8 MB
+[25.04.2014 14:39:02,289] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 500, memory free: 71.4 MB
+[25.04.2014 14:39:02,748] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 525, memory free: 67.5 MB
+[25.04.2014 14:39:03,194] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 550, memory free: 62.4 MB
+[25.04.2014 14:39:03,656] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 575, memory free: 72.8 MB
+[25.04.2014 14:39:04,107] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 600, memory free: 67.0 MB
+[25.04.2014 14:39:04,547] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 625, memory free: 60.3 MB
+[25.04.2014 14:39:05,011] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 650, memory free: 69.3 MB
+[25.04.2014 14:39:05,455] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 675, memory free: 64.4 MB
+[25.04.2014 14:39:05,899] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 700, memory free: 58.6 MB
+[25.04.2014 14:39:06,365] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 725, memory free: 69.3 MB
+[25.04.2014 14:39:06,814] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 750, memory free: 63.4 MB
+[25.04.2014 14:39:07,255] [main] INFO  org.jgap.gp.impl.GPGenotype  - Evolving generation 775, memory free: 58.5 MB
+[25.04.2014 14:39:07,719] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution fitness: 0.0
+[25.04.2014 14:39:07,719] [main] INFO  org.jgap.gp.impl.GPGenotype  - Best solution: (((X * X) - X) * ((X * X) - X)) + 1.0
+[25.04.2014 14:39:07,719] [main] INFO  org.jgap.gp.impl.GPGenotype  - Depth of chrom: 4
