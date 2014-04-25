@@ -232,7 +232,7 @@ public class SymbolicRegression
 
   // "bumping" is when we found a "perfect solution" and
   // want to see more "perfect solutions"
-  public static boolean bumpPerfect = true;
+  public static boolean bumpPerfect = false;
 
   // the limit for which we should show all (different) solutions
   public static Double bumpValue = 0.0000;
@@ -1215,25 +1215,17 @@ public class SymbolicRegression
         }
         try {
           double result = ind.execute_double(0, noargs);
-          // results[j] = result;
-					// System.out.println("RESULT = "+result + "EXPECTED" + data[outputVariable][j]);
+//					 System.out.println("RESULT = "+result + "EXPECTED" + data[outputVariable][j]);
           // Sum up the error between actual and expected result to get a defect
           // rate.
           // -------------------------------------------------------------------
 
+ if(result < 0 && data[outputVariable][j] == 1 ){
+	error+= Math.abs(result);
+}
           // hakank: TODO: test with different metrics...
-//          if(data[outputVariable][j] == 2 && result > 0){
-////        	  System.out.println("ERROR FOR BENIGN");
-//        	  error += Math.abs(result - data[outputVariable][j]);
-//          }
-//          else if(data[outputVariable][j] == 4 && result < 0){
-////        	  System.out.println("ERROR FOR MALIGNANT"); 
-//        	  error += Math.abs(result - data[outputVariable][j]);
-//          }
 //          error += Math.abs(result - data[outputVariable][j]); // original
-//          System.out.println("Type : "+ data[outputVariable][j]);
-//          System.out.println("Result = "+result+""+"  AMOUNT OF ERROR: "+(result - data[outputVariable][j]));
-           error += Math.pow(Math.abs(result - data[outputVariable][j]),2);
+//           error += Math.pow(Math.abs(result - data[outputVariable][j]),2);
 
           // If the error is too high, stop evaluation and return worst error
           // possible.
