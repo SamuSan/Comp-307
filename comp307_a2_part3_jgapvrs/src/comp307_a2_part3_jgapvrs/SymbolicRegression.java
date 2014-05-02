@@ -209,7 +209,7 @@ public class SymbolicRegression
   public static String presentation = "";
 
   // Using ADF
-  public static int adfArity = 0;
+  public static int adfArity = -1;
 
   public static String adfType = "double";
 
@@ -232,10 +232,10 @@ public class SymbolicRegression
 
   // "bumping" is when we found a "perfect solution" and
   // want to see more "perfect solutions"
-  public static boolean bumpPerfect = false;
+  public static boolean bumpPerfect = true;
 
   // the limit for which we should show all (different) solutions
-  public static Double bumpValue = 0.0000;
+  public static Double bumpValue = 0.00;
 
   // checks for already shown solution when bumping
   private static HashMap<String, Integer> foundSolutions = new HashMap<String,
@@ -330,7 +330,7 @@ public class SymbolicRegression
         upperRange, "plain");
     // Create the node sets
     int command_len = commands.length;
-    CommandGene[][] nodeSets = new CommandGene[2][numInputVariables +
+    CommandGene[][] nodeSets = new CommandGene[1][numInputVariables +
         command_len];
     // the variables:
     //  1) in the nodeSets matrix
@@ -956,32 +956,6 @@ public class SymbolicRegression
       String filename = args[0];//e.g. "fahrenheit_celsius.conf"
       readFile(filename);
     }
-    else {
-      // Default problem
-      // Fibonacci series, with three input variables to make it
-      // somewhat harder.
-      // -------------------------------------------------------
-      numRows = 21;
-      numInputVariables = 3;
-      // Note: The last array is the output array
-      int[][] indata = { {1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377,
-          610, 987, 1597, 2584, 4181, 6765, 10946}, {1, 2, 3, 5, 8, 13, 21, 34,
-          55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711},
-          {2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584,
-          4181, 6765, 10946, 17711, 28657}, {3, 5, 8, 13, 21, 34, 55, 89, 144,
-          233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711, 28657,
-          46368}
-      };
-      data = new Double[numInputVariables + 1][numRows];
-      for (int i = 0; i < numInputVariables + 1; i++) {
-        for (int j = 0; j < numRows; j++) {
-          data[i][j] = new Double(indata[i][j]);
-        }
-      }
-      functions = "Multiply,Divide,Add,Subtract".split(",");
-      variableNames = "F1,F2,F3,F4".split(",");
-      presentation = "Fibonacci series";
-    }
     // Present the problem
     // -------------------
     System.out.println("Presentation: " + presentation);
@@ -1143,14 +1117,6 @@ public class SymbolicRegression
         // Ensure that the best solution is in the population.
         // gp.addFittestProgram(thisFittest);
       }
-      else {
-        /*
-          if (gen % 25 == 0 && gen != numEvolutions) {
-         System.out.println("Generation " + gen + " (This is a keep alive message.)");
-            // myOutputSolution(fittest, gen);
-                         }
-         */
-      }
     }
 
     // Print the best solution so far to the console.
@@ -1220,8 +1186,11 @@ public class SymbolicRegression
           // rate.
           // -------------------------------------------------------------------
 
- if(result < 0 && data[outputVariable][j] == 1 ){
-	error+= Math.abs(result);
+ if(result <= 0 && data[outputVariable][j] == 1 ){
+	error++;
+}
+ else if(result >= 0 && data[outputVariable][j] == -1 ){
+	error++;
 }
           // hakank: TODO: test with different metrics...
 //          error += Math.abs(result - data[outputVariable][j]); // original
