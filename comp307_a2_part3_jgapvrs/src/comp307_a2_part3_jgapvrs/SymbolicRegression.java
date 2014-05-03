@@ -1186,10 +1186,10 @@ public class SymbolicRegression
           // rate.
           // -------------------------------------------------------------------
 
- if(result <= 0 && data[outputVariable][j] == 1 ){
+ if(result <= 0 && data[outputVariable][j] == 4 ){
 	error++;
 }
- else if(result >= 0 && data[outputVariable][j] == -1 ){
+ else if(result >= 0 && data[outputVariable][j] == 2 ){
 	error++;
 }
           // hakank: TODO: test with different metrics...

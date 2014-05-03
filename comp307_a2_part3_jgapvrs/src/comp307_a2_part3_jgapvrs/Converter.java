@@ -16,12 +16,12 @@ public class Converter {
 				ClassLoader.getSystemResourceAsStream(file)));
 		while (scan.hasNextLine()) {
 			String[] s = scan.nextLine().split("\t");
-			if(s[9].equals("2")){
-				s[9] = "-1";
-			}
-			else if (s[9].equals("4")){
-				s[9] = "1";
-			}
+//			if(s[9].equals("2")){
+//				s[9] = "-1";
+//			}
+//			else if (s[9].equals("4")){
+//				s[9] = "1";
+//			}
 			String x="";
 			for (String string : s) {
 				x+=string+"\t";
