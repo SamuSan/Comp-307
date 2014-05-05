@@ -129,9 +129,9 @@ import examples.gp.symbolicRegression.XorD;
  *
  * @since 3.5
  */
-public class SymbolicRegression extends GPProblem {
+public class Part3 extends GPProblem {
 	private transient static Logger LOGGER = Logger
-			.getLogger(SymbolicRegression.class);
+			.getLogger(Part3.class);
 
 	/*
 	 * public variables which may be changed by configuration file
@@ -253,7 +253,7 @@ public class SymbolicRegression extends GPProblem {
 
 	public static boolean showSimiliar = false;
 
-	public SymbolicRegression(GPConfiguration a_conf)
+	public Part3(GPConfiguration a_conf)
 			throws InvalidConfigurationException {
 		super(a_conf);
 	}
@@ -1032,7 +1032,7 @@ public class SymbolicRegression extends GPProblem {
 		 * The maximum depth of an individual resulting from crossover.
 		 */
 		config.setMaxCrossoverDepth(maxCrossoverDepth);
-		config.setFitnessFunction(new SymbolicRegression.FormulaFitnessFunction());
+		config.setFitnessFunction(new Part3.FormulaFitnessFunction());
 		/**
 		 * @param a_strict
 		 *            true: throw an error during evolution in case a situation
@@ -1079,7 +1079,7 @@ public class SymbolicRegression extends GPProblem {
 		 * construct a valid program.
 		 */
 		config.setProgramCreationMaxTries(programCreationMaxTries);
-		GPProblem problem = new SymbolicRegression(config);
+		GPProblem problem = new Part3(config);
 		// Create the genotype of the problem, i.e., define the GP commands and
 		// terminals that can be used, and constrain the structure of the GP
 		// program.
@@ -1180,18 +1180,10 @@ public class SymbolicRegression extends GPProblem {
 		System.out.println("\nTotal time " + elapsedTime + "ms");
 
 		readFile(args[1]);
-		GPPopulation testPop = new GPPopulation(config,1);
-		testPop.setGPProgram(0, fittest);
-		gp = createNewGenoForTest(testPop, config);
-		gp.calcFitness();
+		FormulaFitnessFunction f = new FormulaFitnessFunction();
+		double testSetResult = f.computeRawFitness(fittest);
+		System.out.println("Fitness of best solution over test set:" + testSetResult);
 		
-		if (showSimiliar) {
-			System.out.println("\nAll solutions with the best fitness ("
-					+ bestFit + "):");
-			for (String p : similiar.keySet()) {
-				System.out.println(p + " (" + similiar.get(p) + ")");
-			}
-		}
 		System.exit(0);
 	}
 
