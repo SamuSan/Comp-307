@@ -39,23 +39,17 @@ import org.jgap.gp.terminal.*;
  * @author Klaus Meffert
  * @since 3.0
  */
-public class MathProblem extends GPProblem {
+public class Part2 extends GPProblem {
 	/** String containing the CVS revision. Read out via reflection! */
 	private final static String CVS_REVISION = "$Revision: 1.25 $";
 
 	public static Variable vx;
 
-	protected static Float[] x;// = new Float[20];
+	protected static Float[] x;
 
-	protected static float[] y; // = new float[20];
-	// protected static Float[] x =
-	// {-2.0f,-1.75f,-1.5f,-1.25f,-1.00f,-0.75f,-0.5f,-0.25f,0.00f,0.25f,0.5f,0.75f,1.00f,1.25f,
-	// 1.5f,1.75f,2.0f,2.25f,2.5f,2.75f};
-	//
-	// protected static float[] y =
-	// {37.00f,24.1602f,15.0625f,8.9102f,5.0f,2.7227f,1.5625f,1.0977f,1.00f,1.0352f,1.0625f,1.0352f,1.00f,1.0977f,1.5625f,2.7227f,5.0f,8.9102f,15.0625f,24.1602f};
+	protected static float[] y; 
 
-	public MathProblem(GPConfiguration a_conf)
+	public Part2(GPConfiguration a_conf)
 			throws InvalidConfigurationException {
 		super(a_conf);
 	}
@@ -77,85 +71,23 @@ public class MathProblem extends GPProblem {
 	 */
 	public GPGenotype create() throws InvalidConfigurationException {
 		GPConfiguration conf = getGPConfiguration();
-		// At first, we define the return type of the GP program.
-		// ------------------------------------------------------
 		Class[] types = {
-		// Return type of result-producing chromosome
 		CommandGene.FloatClass };
-		// ADF-relevant:
-		// Return type of ADF 1
-		// CommandGene.FloatClass};
-		// Then, we define the arguments of the GP parts. Normally, only for
-		// ADF's
-		// there is a specification here, otherwise it is empty as in first
-		// case.
-		// -----------------------------------------------------------------------
 		Class[][] argTypes = {
-		// Arguments of result-producing chromosome: none
 		{},
-		// ADF-relevant:
-		// Arguments of ADF1: all 3 are float
-		// {CommandGene.FloatClass, CommandGene.FloatClass,
-		// CommandGene.FloatClass}
 		};
-		// Next, we define the set of available GP commands and terminals to
-		// use.
-		// Please see package org.jgap.gp.function and org.jgap.gp.terminal
-		// You can easily add commands and terminals of your own.
-		// ----------------------------------------------------------------------
 		CommandGene[][] nodeSets = { {
 				// We use a variable that can be set in the fitness function.
 				// ----------------------------------------------------------
 				vx = Variable.create(conf, "X", CommandGene.FloatClass),
 				new Multiply(conf, CommandGene.FloatClass),
-				// new Multiply3(conf, CommandGene.FloatClass),
 				new Divide(conf, CommandGene.FloatClass),
-				// new Sine(conf, CommandGene.FloatClass),
-				// new Exp(conf, CommandGene.FloatClass),
 				new Subtract(conf, CommandGene.FloatClass),
 				new Add(conf, CommandGene.FloatClass),
-//				new Pow(conf, CommandGene.FloatClass),
-				// new Abs(conf, CommandGene.FloatClass),
+				new Pow(conf, CommandGene.FloatClass),
 				new Terminal(conf, CommandGene.FloatClass, -1.0d, 1.0d, true),
-		// ADF-relevant:
-		// Construct a reference to the ADF defined in the second nodeset
-		// which has index 1 (second parameter of ADF-constructor).
-		// Furthermore, the ADF expects three input parameters (see argTypes[1])
-		// new ADF(conf, 1 , 3),
 		}
-		// ADF-relevant:
-		// and now the definition of ADF(1)
-		// {
-		// new Add3(conf, CommandGene.FloatClass),
-		// }
 		};
-		// Here, we define the expected (optimal) output we want to achieve by
-		// the
-		// function/formula to evolve by the GP.
-		// -----------------------------------------------------------------------
-		// Random random = new Random();
-		// Randomly initialize function data (X-Y table) for x^4+x^3+x^2-x
-		// ---------------------------------------------------------------
-		// for (int i = 0; i < 20; i++) {
-		// float f = 8.0f * (random.nextFloat() - 0.3f);
-		// x[i] = new Float(f);
-		// y[i] = f * f * f * f + f * f * f + f * f - f;
-		// System.out.println(i + ") " + x[i] + "   " + y[i]);
-		// }
-
-		// Create genotype with initial population. Here, we use the
-		// declarations
-		// made above:
-		// Use one result-producing chromosome (index 0) with return type float
-		// (see types[0]), no argument (argTypes[0]) and several valid commands
-		// and
-		// terminals (nodeSets[0]). Contained in the node set is an ADF at index
-		// 1
-		// in the node set (as declared with the second parameter during
-		// ADF-construction: new ADF(..,1,..)).
-		// The ADF has return type float (types[1]), three input parameters of
-		// type
-		// float (argTypes[1]) and exactly one function: Add3 (nodeSets[1]).
 		// ------------------------------------------------------------------------
 		return GPGenotype.randomInitialGenotype(conf, types, argTypes,
 				nodeSets, 20, true);
@@ -201,15 +133,15 @@ public class MathProblem extends GPProblem {
 		// a point score!
 		// ----------------------------------------------------------------------
 		config.setGPFitnessEvaluator(new DeltaGPFitnessEvaluator());
-		config.setMaxInitDepth(6);
+		config.setMaxInitDepth(4);
 		config.setPopulationSize(1000);
 		config.setMaxCrossoverDepth(8);
-		config.setFitnessFunction(new MathProblem.FormulaFitnessFunction());
+		config.setFitnessFunction(new Part2.FormulaFitnessFunction());
 		config.setStrictProgramCreation(true);
 		config.setCrossoverProb(75.0f);
 		config.setMutationProb(25.0f);
 		config.setReproductionProb(0.2f);
-		GPProblem problem = new MathProblem(config);
+		GPProblem problem = new Part2(config);
 		// Create the genotype of the problem, i.e., define the GP commands and
 		// terminals that can be used, and constrain the structure of the GP
 		// program.
@@ -220,7 +152,7 @@ public class MathProblem extends GPProblem {
 		// if a satisfying result is found (fitness value almost 0), JGAP stops
 		// earlier automatically.
 		// --------------------------------------------------------------------
-		gp.evolve(800);
+		gp.evolve(2000);
 		// Print the best solution so far to the console.
 		// ----------------------------------------------
 		gp.outputSolution(gp.getAllTimeBest());
